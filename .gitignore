@@ -1,6 +1,9 @@
 # Private / out-of-scope
 test_cases/
 
+# Private / testing
+tests/
+
 # Claude Code per-machine state
 .claude/
 
