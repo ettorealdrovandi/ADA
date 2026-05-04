@@ -13,5 +13,10 @@ Thumbs.db
 *.swp
 *.swo
 
+# Jekyll local-preview output
+_site/
+.jekyll-cache/
+
 # Per-pipeline build artifacts are handled by each subdirectory's own .gitignore
-# (tagging/.gitignore, latexml/.gitignore, tex4ht/.gitignore, markdown/.gitignore).
+# (tagging/.gitignore, latexml/.gitignore, tex4ht/.gitignore, markdown/.gitignore,
+# docs/.gitignore).

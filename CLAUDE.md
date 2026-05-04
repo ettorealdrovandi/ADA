@@ -10,7 +10,8 @@ This is a LaTeX research/experimentation repository focused on **accessible PDF 
 - **`latexml/`** — LaTeX-to-HTML conversion experiments using LaTeXML. Examples live under `latexml/examples/{minimal,accessibility,research-article}/`; see `latexml/README.md` for the overview.
 - **`tex4ht/`** — LaTeX-to-HTML conversion experiments using TeX4ht (`make4ht`). Examples live under `tex4ht/examples/{minimal,accessibility}/`; see `tex4ht/README.md` for the overview. Each example commits both a MathJax- and a MathML-rendered output.
 - **`markdown/`** — Markdown-to-HTML conversion experiments using Pandoc. Examples live under `markdown/examples/{minimal,accessibility}/`; see `markdown/README.md` for the overview. **Scope:** intentionally limited to single-file Markdown projects — multi-file workflows (book chapters, citations, custom Lua filters) are out of scope and would be a different project.
-- **`test_cases/`** — Real-world, messier LaTeX sources (course notes, etc.) plus `test_cases/build.sh`, the defensive pipeline that compiles them into accessible tagged PDFs. The originals are never edited; iterate on `test_cases/build.sh` instead.
+- **`test_cases/`** — Real-world, messier LaTeX sources (course notes, etc.) plus `test_cases/build.sh`, the defensive pipeline that compiles them into accessible tagged PDFs. The originals are never edited; iterate on `test_cases/build.sh` instead. **Gitignored at the repo root** — kept private locally, not pushed to the public repo.
+- **`docs/`** — Jekyll source for the GitHub Pages site at `https://ettorealdrovandi.github.io/ADA/`. Uses `remote_theme: just-the-docs/just-the-docs`. The docs/ pages are a thin overview layer and intentionally summarize (not duplicate) the per-pipeline READMEs. For local preview: `cd docs && bundle install && bundle exec jekyll serve`.
 
 ## Compilation
 

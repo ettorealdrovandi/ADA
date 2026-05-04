@@ -1,0 +1,27 @@
+title: ADA — Accessible Documents from LaTeX
+description: Experiments in producing accessible PDF and HTML output from LaTeX sources.
+
+remote_theme: just-the-docs/just-the-docs
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+
+# Just-the-Docs settings
+search_enabled: true
+heading_anchors: true
+color_scheme: light
+
+aux_links:
+  "GitHub repository":
+    - "https://github.com/ettorealdrovandi/ADA"
+
+# Math support
+mathjax: true
+
+# Standard Jekyll
+markdown: kramdown
+kramdown:
+  math_engine: mathjax
+
+# Pages built from /docs do not need baseurl/url here — GitHub Pages sets them.

@@ -7,19 +7,22 @@ Experiments in producing accessible PDF and HTML output from LaTeX sources.
 ADA is a research and experimentation playground that compares several
 toolchains for emitting accessible documents from LaTeX: PDF/UA tagging via
 LuaLaTeX + `tagpdf`, plus HTML conversion via LaTeXML, TeX4ht (`make4ht`),
-and Pandoc. The `tagging/` directory holds a curated set of examples ready
-to be read and reused; the other directories are still works in progress
-and may have rough edges.
+and Pandoc. Each pipeline lives in its own subdirectory with curated
+examples and a per-pipeline README.
+
+A browsable documentation site is published at
+**[ettorealdrovandi.github.io/ADA](https://ettorealdrovandi.github.io/ADA/)**
+(built from `docs/` via Jekyll + Just-the-Docs).
 
 ## Subdirectories
 
-| Path | What it does | Status |
-|---|---|---|
-| [`tagging/`](tagging/) | PDF/UA accessibility examples using LuaLaTeX + `tagpdf`. Minimal UA-1 / UA-2 documents and one longer worked example. | **Curated** |
-| [`latexml/`](latexml/) | LaTeX-to-HTML conversion via LaTeXML, with light a11y post-processing. | **Curated** |
-| [`tex4ht/`](tex4ht/) | LaTeX-to-HTML conversion via TeX4ht (`make4ht`). Each example commits both a MathJax- and MathML-rendered HTML for direct comparison. | **Curated** |
-| [`markdown/`](markdown/) | Markdown-to-HTML conversion via Pandoc. Each example commits both a MathJax- and MathML-rendered HTML. **Single-file Markdown only — multi-file workflows out of scope.** | **Curated** |
-| [`test_cases/`](test_cases/) | Real-world LaTeX sources (course notes, etc.) plus `test_cases/build.sh`, the defensive multi-phase pipeline that produces tagged accessible PDFs from them. | Under restructuring |
+| Path | What it does |
+|---|---|
+| [`tagging/`](tagging/) | PDF/UA accessibility examples using LuaLaTeX + `tagpdf`. Minimal UA-1 / UA-2 documents and one longer worked example. |
+| [`latexml/`](latexml/) | LaTeX-to-HTML conversion via LaTeXML, with light a11y post-processing. |
+| [`tex4ht/`](tex4ht/) | LaTeX-to-HTML conversion via TeX4ht (`make4ht`). Each example commits both a MathJax- and MathML-rendered HTML for direct comparison. |
+| [`markdown/`](markdown/) | Markdown-to-HTML conversion via Pandoc. **Single-file Markdown only — multi-file workflows out of scope.** |
+| [`docs/`](docs/) | Jekyll source for the GitHub Pages site (Just-the-Docs theme). |
 
 ## Quick start
 

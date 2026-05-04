@@ -1,0 +1,5 @@
+source "https://rubygems.org"
+
+# Use the github-pages gem to match GitHub's Pages build environment
+# (theme, plugins, Jekyll version) when previewing locally.
+gem "github-pages", group: :jekyll_plugins
