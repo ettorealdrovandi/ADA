@@ -1,0 +1,19 @@
+// The Just-the-Docs sidebar header has min-height: 3.75rem and uses
+// `align-items: center`, which clips the top of long titles that wrap
+// onto multiple lines (the "ADA — Accessible Documents from LaTeX"
+// title wraps to 3-4 lines on typical desktop widths). On desktop,
+// give the header room for up to 4 wrapped lines, top-align the title,
+// and tighten line-height. Mobile (collapsed sidebar) is left untouched.
+@media (min-width: 50rem) {
+  .site-header {
+    min-height: 9rem;
+    align-items: flex-start;
+    flex-shrink: 0;
+  }
+
+  .site-title {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    line-height: 1.25;
+  }
+}
