@@ -23,4 +23,7 @@ markdown: kramdown
 kramdown:
   math_engine: mathjax
 
-# Pages built from /docs do not need baseurl/url here — GitHub Pages sets them.
+# baseurl/url are intentionally omitted here. The GitHub Actions workflow
+# (.github/workflows/pages.yml) injects --baseurl at build time from
+# actions/configure-pages, so the same _config.yml works locally (root path)
+# and in production (/ADA path).
