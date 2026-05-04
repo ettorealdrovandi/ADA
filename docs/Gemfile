@@ -1,5 +1,13 @@
 source "https://rubygems.org"
 
-# Use the github-pages gem to match GitHub's Pages build environment
-# (theme, plugins, Jekyll version) when previewing locally.
-gem "github-pages", group: :jekyll_plugins
+# Build directly with Jekyll 4 + just-the-docs (gem) instead of the
+# github-pages meta-gem, which pins Jekyll 3.10 / Liquid 4.0.4 — those
+# call String#tainted?, removed in Ruby 3.2+, so they no longer run on
+# current Rubies. The site is deployed via .github/workflows/pages.yml,
+# which builds with the same Ruby/Jekyll/theme combo as this Gemfile.
+gem "jekyll", "~> 4.4"
+gem "just-the-docs", "~> 0.10"
+gem "jekyll-seo-tag", "~> 2.8"
+
+# WEBrick is no longer a default gem in Ruby 3.0+ but `jekyll serve` needs it.
+gem "webrick", "~> 1.8"

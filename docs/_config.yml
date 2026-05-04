@@ -1,10 +1,9 @@
 title: ADA — Accessible Documents from LaTeX
 description: Experiments in producing accessible PDF and HTML output from LaTeX sources.
 
-remote_theme: just-the-docs/just-the-docs
+theme: just-the-docs
 
 plugins:
-  - jekyll-remote-theme
   - jekyll-seo-tag
 
 # Just-the-Docs settings
