@@ -6,6 +6,10 @@ tests/
 
 # Claude Code per-machine state
 .claude/
+CLAUDE.local.md
+
+# playwright-cli session artifacts (lands wherever the CLI is invoked)
+.playwright-cli/
 
 # OS / editor cruft
 .DS_Store
