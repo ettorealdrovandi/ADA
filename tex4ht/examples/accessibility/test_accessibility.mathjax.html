@@ -1,0 +1,205 @@
+<!DOCTYPE html> 
+<html lang='en-US' xml:lang='en-US'> 
+<head> <title>Mathematical Accessibility Test</title> 
+<meta charset='utf-8' /> 
+<meta content='TeX4ht (https://tug.org/tex4ht/)' name='generator' /> 
+<meta content='width=device-width,initial-scale=1' name='viewport' /> 
+<link href='test_accessibility.css' rel='stylesheet' type='text/css' /> 
+<meta content='test_accessibility.tex' name='src' /> 
+<script>window.MathJax = { tex: { tags: "ams", }, }; </script> 
+<script async='async' id='MathJax-script' src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js' type='text/javascript'></script>  
+<link href='style.css' rel='stylesheet' type='text/css' /> 
+</head><body>
+   <div class='maketitle'>
+                                                                  
+
+                                                                  
+                                                                  
+
+                                                                  
+
+<h1 class='titleHead'>Mathematical Accessibility Test</h1>
+ <div class='author'><span class='cmr-12'>Ettore Aldrovandi</span></div><br />
+<div class='date'><span class='cmr-12'>May 3, 2026</span></div>
+   </div>
+   
+   <h3 class='sectionHead' id='introduction'><span class='titlemark'>1   </span>   <a id='x1-10001'></a>Introduction</h3>
+<!-- l. 31 --><p class='noindent'>This document tests PDF/UA-2 accessibility tagging for mathematical content and
+figures. Mathematics pervades science: the famous Euler identity <span class='mathjax-inline'>\(e^{i\pi } + 1 = 0\)</span> encapsulates the
+relationship between the five most important constants in mathematics.
+Similarly, the Gaussian integral <span class='mathjax-inline'>\(\int _{-\infty }^{\infty } e^{-x^2}\,dx = \sqrt {\pi }\)</span> appears throughout probability theory and
+physics.
+<!-- l. 38 --></p><p class='indent'>   The interplay between algebra and analysis has driven much of modern
+mathematics. Formulae such as these encode deep structural relationships that
+underpin fields ranging from quantum mechanics to probability theory. Making
+such content accessible to all readers—including those relying on assistive
+technologies—is both a technical challenge and an ethical imperative for
+mathematical publishing.
+<!-- l. 44 --></p><p class='indent'>   This document samples several areas of classical mathematics: elementary
+identities, complex analysis via the residue theorem, and differential geometry via
+Stokes’ theorem. Each section pairs formal definitions and theorem statements with
+illustrative computations. The final section demonstrates the inclusion of figures
+alongside tagged mathematical text, exercising the full range of PDF/UA-2
+accessibility features.
+   
+   </p><h3 class='sectionHead' id='mathematical-formulas'><span class='titlemark'>2   </span>   <a id='x1-20002'></a>Mathematical Formulas</h3>
+   
+   <h4 class='subsectionHead' id='display-equations'><span class='titlemark'>2.1   </span>   <a id='x1-30002.1'></a>Display Equations</h4>
+<!-- l. 54 --><p class='noindent'>The Gaussian integral evaluates to: </p><div class='mathjax-env mathjax-equation'>\begin{equation} \int _{-\infty }^{\infty } e^{-x^2}\,dx = \sqrt {\pi }. \end{equation}</div>
+                                                                  
+
+                                                                  
+<p><a id='x1-3001r1'></a>
+<!-- l. 59 --></p><p class='indent'>   The geometric series converges for <span class='mathjax-inline'>\(|x| &lt; 1\)</span>: </p><div class='mathjax-env mathjax-equation'>\begin{equation} \sum _{k=0}^{\infty } x^k = \frac {1}{1-x}. \end{equation}</div>
+<p><a id='x1-3002r2'></a>
+   
+   </p><h4 class='subsectionHead' id='aligned-equations'><span class='titlemark'>2.2   </span>   <a id='x1-40002.2'></a>Aligned Equations</h4>
+<!-- l. 66 --><p class='noindent'>The binomial identities follow from expanding <span class='mathjax-inline'>\((a \pm b)^2\)</span>: </p><div class='mathjax-env mathjax-align'>\begin{align} (a + b)^{2} &amp;= a^{2} + 2ab + b^{2}, \\ (a - b)^{2} &amp;= a^{2} - 2ab + b^{2}, \\ (a + b)(a - b) &amp;= a^{2} - b^{2}. \end{align}</div>
+<p><a id='x1-4001r3'></a>
+<!-- l. 73 --></p><p class='indent'>   Identities of this kind recur throughout algebra and combinatorics, and
+generalise naturally to polynomial rings and other algebraic structures. The
+transition from scalar arithmetic to matrix arithmetic preserves much of
+this structure, though one must take care: unlike real numbers, matrices
+do not in general commute under multiplication, so the order of factors
+matters.
+   
+   </p><h4 class='subsectionHead' id='matrices'><span class='titlemark'>2.3   </span>   <a id='x1-50002.3'></a>Matrices</h4>
+<!-- l. 81 --><p class='noindent'>A general <span class='mathjax-inline'>\(2 \times 2\)</span> matrix and its determinant: </p><div class='mathjax-env mathjax-equation'>\begin{equation} A = \begin {pmatrix} a &amp; b \\ c &amp; d \end {pmatrix}, \qquad \det (A) = ad - bc. \end{equation}</div>
+<p><a id='x1-5001r4'></a>
+   
+   </p><h3 class='sectionHead' id='the-residue-theorem'><span class='titlemark'>3   </span>   <a id='x1-60003'></a>The Residue Theorem</h3>
+<!-- l. 89 --><p class='noindent'>Complex analysis studies functions <span class='mathjax-inline'>\(f\colon U \to \mathbb {C}\)</span> that are differentiable in the complex sense,
+known as <span class='cmti-10'>holomorphic </span>functions. Such functions are extraordinarily rigid:
+holomorphicity on an open set implies infinite differentiability and a convergent
+power series representation. Isolated points where this regularity breaks down are
+called <span class='cmti-10'>singularities</span>, and their local behaviour is captured precisely by the Laurent
+series expansion.
+   </p><div class='newtheorem definition'>
+   <div class='newtheorem'>
+<!-- l. 96 --><p class='noindent'><span class='head'>
+<a id='x1-6001r1'></a>
+<span class='cmbx-10'>Definition 3.1.</span>  </span><span class='cmti-10'>Let </span><span class='mathjax-inline'>\(f\) </span><span class='cmti-10'>be holomorphic on a punctured disk </span><span class='mathjax-inline'>\(0 &lt; |z - a| &lt; r\)</span><span class='cmti-10'>. The </span>residue <span class='cmti-10'>of </span><span class='mathjax-inline'>\(f\) </span><span class='cmti-10'>at </span><span class='mathjax-inline'>\(a\) </span><span class='cmti-10'>is the
+coefficient </span><span class='mathjax-inline'>\(a_{-1}\) </span><span class='cmti-10'>in the Laurent expansion </span></p><div class='mathjax-env mathjax-equation'>\begin{equation} f(z) = \sum _{n=-\infty }^{\infty } a_n (z - a)^n, \end{equation}</div>
+<a id='x1-6002r5'></a>
+<!-- l. 102 --><p class='indent'>   <span class='cmti-10'>equivalently, </span></p><div class='mathjax-env mathjax-equation'>\begin{equation} \operatorname {Res}(f, a) = \frac {1}{2\pi i} \oint _{|z-a|=\varepsilon } f(z)\,dz. \end{equation}</div>
+<a id='x1-6003r6'></a>
+<!-- l. 107 --><p class='indent'>   <span class='cmti-10'>For a simple pole, the residue simplifies to </span></p><div class='mathjax-env mathjax-equation'>\begin{equation} \operatorname {Res}(f, a) = \lim _{z \to a}(z - a)f(z). \end{equation}</div>
+<a id='x1-6004r7'></a>
+                                                                  
+
+                                                                  
+   </div>
+<!-- l. 111 --><p class='indent'>   </p></div>
+   <div class='newtheorem theorem'>
+   <div class='newtheorem'>
+<!-- l. 113 --><p class='noindent'><span class='head'>
+<a id='x1-6005r2'></a>
+<span class='cmbx-10'>Theorem 3.2 </span>(Residue Theorem)<span class='cmbx-10'>.</span>  </span><span class='cmti-10'>Let </span><span class='mathjax-inline'>\(U \subset \mathbb {C}\) </span><span class='cmti-10'>be open and </span><span class='mathjax-inline'>\(f\) </span><span class='cmti-10'>holomorphic on </span><span class='mathjax-inline'>\(U\) </span><span class='cmti-10'>except at
+finitely many isolated singularities </span><span class='mathjax-inline'>\(a_1, \ldots , a_n \in U\)</span><span class='cmti-10'>. For any positively oriented simple closed contour </span><span class='mathjax-inline'>\(\gamma \)
+</span><span class='cmti-10'>in </span><span class='mathjax-inline'>\(U\) </span><span class='cmti-10'>avoiding all </span><span class='mathjax-inline'>\(a_k\)</span><span class='cmti-10'>, </span></p><div class='mathjax-env mathjax-equation'>\begin{equation} \oint _{\gamma } f(z)\,dz = 2\pi i \sum _{k=1}^{n} n(\gamma , a_k)\,\operatorname {Res}(f, a_k), \end{equation}</div>
+<a id='x1-6006r8'></a>
+<!-- l. 121 --><p class='indent'>   <span class='cmti-10'>where </span><span class='mathjax-inline'>\(n(\gamma , a_k)\) </span><span class='cmti-10'>denotes the winding number of </span><span class='mathjax-inline'>\(\gamma \) </span><span class='cmti-10'>about </span><span class='mathjax-inline'>\(a_k\)</span><span class='cmti-10'>.</span>
+   </p></div>
+<!-- l. 122 --><p class='indent'>   </p></div>
+   
+   <h4 class='subsectionHead' id='example'><span class='titlemark'>3.1   </span>   <a id='x1-70003.1'></a>Example</h4>
+<!-- l. 126 --><p class='noindent'>Evaluate <span class='mathjax-inline'>\(\displaystyle I = \oint _{|z|=2} \dfrac {dz}{z^{2} - 1}\)</span>.
+<!-- l. 128 --></p><p class='indent'>   The integrand has simple poles at <span class='mathjax-inline'>\(z = \pm 1\)</span>, both enclosed by <span class='mathjax-inline'>\(|z| = 2\)</span>. Computing each residue:
+</p><div class='mathjax-env mathjax-align'>\begin{align} \operatorname {Res}\!\left (\tfrac {1}{z^{2}-1},\; 1\right ) &amp;= \lim _{z \to 1} \frac {z - 1}{z^{2}-1} = \lim _{z \to 1} \frac {1}{z+1} = \phantom {-}\frac {1}{2}, \\[4pt] \operatorname {Res}\!\left (\tfrac {1}{z^{2}-1},\; {-1}\right ) &amp;= \lim _{z \to -1} \frac {z + 1}{z^{2}-1} = \lim _{z \to -1} \frac {1}{z-1} = -\frac {1}{2}. \end{align}</div>
+<p><a id='x1-7001r9'></a>
+<!-- l. 140 --></p><p class='indent'>   The residues sum to zero, so <span class='mathjax-inline'>\(I = 2\pi i \cdot 0 = 0\)</span>.
+<!-- l. 142 --></p><p class='indent'>   The residue theorem is one of the most powerful computational tools in complex
+analysis, reducing contour integrals over closed curves to finite algebraic sums. Its
+applications extend well beyond pure mathematics: it underlies partial fraction
+methods in signal processing, closed-form evaluation of real improper integrals, and
+aspects of the spectral theory of linear operators. The next section turns to a related
+but broader integration theorem, formulated in the language of differential forms on
+smooth manifolds.
+   
+   </p><h3 class='sectionHead' id='stokes-theorem'><span class='titlemark'>4   </span>   <a id='x1-80004'></a>Stokes’ Theorem</h3>
+<!-- l. 152 --><p class='noindent'>Stokes’ theorem is the central result of the calculus of differential forms, unifying the
+classical theorems of Green, Gauss, and Stokes under a single statement. Its
+formulation requires the language of smooth manifolds and the exterior derivative <span class='mathjax-inline'>\(d\)</span>,
+which generalises the gradient, curl, and divergence of vector calculus to arbitrary
+dimension and codimension.
+   </p><div class='newtheorem theorem'>
+   <div class='newtheorem'>
+<!-- l. 158 --><p class='noindent'><span class='head'>
+<a id='x1-8001r1'></a>
+                                                                  
+
+                                                                  
+<span class='cmbx-10'>Theorem 4.1 </span>(Stokes’ Theorem — General Form)<span class='cmbx-10'>.</span>  </span><span class='cmti-10'>Let </span><span class='mathjax-inline'>\(\Omega \) </span><span class='cmti-10'>be a smooth oriented
+</span><span class='mathjax-inline'>\(k\)</span><span class='cmti-10'>-manifold with boundary </span><span class='mathjax-inline'>\(\partial \Omega \)</span><span class='cmti-10'>, and let </span><span class='mathjax-inline'>\(\omega \) </span><span class='cmti-10'>be a smooth </span><span class='mathjax-inline'>\((k-1)\)</span><span class='cmti-10'>-form on </span><span class='mathjax-inline'>\(\Omega \)</span><span class='cmti-10'>. Then </span></p><div class='mathjax-env mathjax-equation'>\begin{equation} \int _{\partial \Omega } \omega = \int _{\Omega } d\omega , \end{equation}</div>
+<a id='x1-8002r10'></a>
+<!-- l. 164 --><p class='indent'>   <span class='cmti-10'>where </span><span class='mathjax-inline'>\(d\) </span><span class='cmti-10'>denotes the exterior derivative.</span>
+   </p></div>
+<!-- l. 165 --><p class='indent'>   </p></div>
+<!-- l. 167 --><p class='indent'>   In classical vector calculus, taking <span class='mathjax-inline'>\(\Omega \)</span> to be a surface <span class='mathjax-inline'>\(S \subset \mathbb {R}^{3}\)</span> with boundary curve <span class='mathjax-inline'>\(\partial S\)</span> and <span class='mathjax-inline'>\(\omega = \mathbf {F} \cdot d\mathbf {r}\)</span>
+recovers the familiar vector form: </p><div class='mathjax-env mathjax-equation'>\begin{equation} \oint _{\partial S} \mathbf {F} \cdot d\mathbf {r} = \iint _{S} (\nabla \times \mathbf {F}) \cdot d\mathbf {S}. \end{equation}</div>
+<p><a id='x1-8003r11'></a>
+   </p><div class='newtheorem corollary'>
+   <div class='newtheorem'>
+<!-- l. 175 --><p class='noindent'><span class='head'>
+<a id='x1-8004r2'></a>
+<span class='cmbx-10'>Corollary 4.2 </span>(Green’s Theorem)<span class='cmbx-10'>.</span>  </span><span class='cmti-10'>For a positively oriented simple closed curve </span><span class='mathjax-inline'>\(\partial D\)
+</span><span class='cmti-10'>bounding a region </span><span class='mathjax-inline'>\(D \subset \mathbb {R}^{2}\) </span><span class='cmti-10'>and smooth functions </span><span class='mathjax-inline'>\(P\)</span><span class='cmti-10'>, </span><span class='mathjax-inline'>\(Q\)</span><span class='cmti-10'>, </span></p><div class='mathjax-env mathjax-equation'>\begin{equation} \oint _{\partial D} \bigl (P\,dx + Q\,dy\bigr ) = \iint _{D} \left (\frac {\partial Q}{\partial x} - \frac {\partial P}{\partial y}\right )dx\,dy. \end{equation}</div>
+<a id='x1-8005r12'></a>
+   </div>
+<!-- l. 183 --><p class='indent'>   </p></div>
+<!-- l. 185 --><p class='indent'>   The theorems presented in the preceding sections are best understood through
+geometric intuition: closed contours winding around singularities in the complex
+plane, and surfaces bounded by oriented curves in three-dimensional space. The
+figures below provide visual anchors for these analytic statements, illustrating the
+two principal geometric settings encountered in this document.
+   
+   </p><h3 class='sectionHead' id='figures'><span class='titlemark'>5   </span>   <a id='x1-90005'></a>Figures</h3>
+   
+   <h4 class='subsectionHead' id='contour-in-the-complex-plane'><span class='titlemark'>5.1   </span>   <a id='x1-100005.1'></a>Contour in the Complex Plane</h4>
+<!-- l. 195 --><p class='noindent'>Figure <a href='#positively-oriented-contour-z2-enclosing-the-poles-of-1z21-at-z-1-marked-'>1<!-- tex4ht:ref: fig:contour  --></a> illustrates the setup of the Residue Theorem: a positively oriented circular
+contour <span class='mathjax-inline'>\(\gamma \)</span> enclosing the poles of <span class='mathjax-inline'>\(f(z) = 1/(z^{2}-1)\)</span> at <span class='mathjax-inline'>\(z = \pm 1\)</span>.
+<!-- l. 199 --></p><p class='indent'>   </p><figure class='figure' id='x1-100011'><span id='positively-oriented-contour-z2-enclosing-the-poles-of-1z21-at-z-1-marked-'></span> 
+
+                                                                  
+
+                                                                  
+
+                                                                  
+
+                                                                  
+<!-- l. 201 --><p class='noindent'><img alt='[Picture]' src='test_accessibility0x.svg' />
+</p><figcaption class='caption'><span class='id'>Figure 1: </span><span class='content'>Positively oriented contour <span class='mathjax-inline'>\(\gamma \colon |z|=2\)</span> enclosing the poles of <span class='mathjax-inline'>\(1/(z^{2}-1)\)</span> at <span class='mathjax-inline'>\(z = \pm 1\)</span> (marked <span class='mathjax-inline'>\(\times \)</span>).</span></figcaption><!-- tex4ht:label?: x11100011  -->
+                                                                  
+
+                                                                  
+<!-- l. 229 --><p class='indent'>   </p></figure>
+   
+   <h4 class='subsectionHead' id='surface-with-boundary'><span class='titlemark'>5.2   </span>   <a id='x1-110005.2'></a>Surface with Boundary</h4>
+<!-- l. 233 --><p class='noindent'>In the setting of Stokes’ theorem, the surface <span class='mathjax-inline'>\(S\)</span> may be any smooth oriented <span class='mathjax-inline'>\(2\)</span>-manifold
+with boundary. The boundary <span class='mathjax-inline'>\(\partial S\)</span> inherits an orientation from that of <span class='mathjax-inline'>\(S\)</span>, conventionally
+determined by the right-hand rule relative to the outward normal. The precise shape
+of <span class='mathjax-inline'>\(S\)</span> is immaterial to the theorem—only the relationship between <span class='mathjax-inline'>\(S\)</span> and <span class='mathjax-inline'>\(\partial S\)</span> governs the
+equality of the two integrals.
+<!-- l. 239 --></p><p class='indent'>   Figure <a href='#a-surface-s-with-boundary-s-placeholder'>2<!-- tex4ht:ref: fig:stokes  --></a> depicts a surface <span class='mathjax-inline'>\(S\)</span> with boundary <span class='mathjax-inline'>\(\partial S\)</span>, the geometric setting of Stokes’
+theorem.
+<!-- l. 242 --></p><p class='indent'>   </p><figure class='figure' id='x1-110012'><span id='a-surface-s-with-boundary-s-placeholder'></span> 
+
+                                                                  
+
+                                                                  
+
+                                                                  
+
+                                                                  
+<!-- l. 244 --><p class='noindent'><img alt='PIC' height='172' src='alphatest.png' width='172' />
+</p><figcaption class='caption'><span class='id'>Figure 2: </span><span class='content'>A surface <span class='mathjax-inline'>\(S\)</span> with boundary <span class='mathjax-inline'>\(\partial S\)</span> (placeholder).</span></figcaption><!-- tex4ht:label?: x11110012  -->
+                                                                  
+
+                                                                  
+<!-- l. 247 --><p class='indent'>   </p></figure>
+    
+</body> 
+</html>
+                                                                  
+
+

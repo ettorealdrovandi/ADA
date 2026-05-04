@@ -1,0 +1,86 @@
+<PDF>
+ <StructTreeRoot>
+  <Document
+     id="ID.002"
+    >
+   <text-unit
+      id="ID.005"
+      rolemaps-to="Part"
+     >
+    <Title
+       id="ID.006"
+       xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+       Layout:TextAlign="Center"
+       rolemaps-to="P"
+      >
+     <?MarkedContent page="1" ?>Tagging Test
+    </Title>
+    <text
+       id="ID.007"
+       xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+       Layout:TextAlign="Center"
+       rolemaps-to="P"
+      >
+     <?MarkedContent page="1" ?> Ettore Aldrovandi
+    </text>
+    <text
+       id="ID.008"
+       xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+       Layout:TextAlign="Center"
+       rolemaps-to="P"
+      >
+     <?MarkedContent page="1" ?>February 20, 2026
+    </text>
+   </text-unit>
+   <text-unit
+      id="ID.009"
+      rolemaps-to="Part"
+     >
+    <text
+       id="ID.010"
+       xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+       Layout:TextAlign="Justify"
+       rolemaps-to="P"
+      >
+     <?MarkedContent page="1" ?>As any dedicated reader can clearly see, the Ideal of practical reason is a represen
+     <?MarkedContent page="1" ?>tation of, as far as I know, the things in themselves; as I have shown elsewhere, the phenomena should only be used as a canon for our understanding. The paralogisms of practical reason are what first give rise to the architectonic of practical reason.
+    </text>
+   </text-unit>
+   <text-unit
+      id="ID.011"
+      rolemaps-to="Part"
+     >
+    <Formula
+       id="ID.012"
+       title="equation*"
+       alt="LaTeX formula starts \begin {equation*} F \colon \symcal {C} \longrightarrow \symcal {D} \end {equation*} LaTeX formula ends "
+       af="mathml-1.xml tag-AFfile1.tex"
+       xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+       Layout:Placement="Block"
+      >
+      <AssociatedFile name="mathml-1.xml" xmlns="">
+      <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"> <mi>𝐹</mi> <mspace width="0.111em"/> <mrow/> <mspace width="-0.167em"/> <mspace width="0.167em"/> <mi mathvariant="normal">∶</mi> <mspace width="0.333em"/> <mi>𝒞</mi> <mo lspace="0.278em" rspace="0.278em" stretchy="false">⟶</mo> <mi>𝒟</mi> </math>
+      </AssociatedFile>
+      <AssociatedFile name="tag-AFfile1.tex" xmlns="">
+      \begin {equation*}F \colon \symcal {C} \longrightarrow \symcal {D}\end {equation*}
+      </AssociatedFile>
+     <?MarkedContent page="1" ?>𝐹∶𝒞⟶𝒟
+    </Formula>
+   </text-unit>
+   <text-unit
+      id="ID.013"
+      rolemaps-to="Part"
+     >
+    <text
+       id="ID.014"
+       xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+       Layout:TextAlign="Justify"
+       rolemaps-to="P"
+      >
+     <?MarkedContent page="1" ?>Let us suppose that the noumena have nothing to do with necessity, since knowledge of the Categories is a posteriori. Hume tells us that the transcendental unity of apper
+     <?MarkedContent page="1" ?>ception can not take account of the discipline of natural reason, by means of analytic unity.
+    </text>
+   </text-unit>
+  </Document>
+ </StructTreeRoot>
+</PDF>

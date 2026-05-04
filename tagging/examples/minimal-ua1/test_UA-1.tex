@@ -1,0 +1,34 @@
+\DocumentMetadata{
+  tagging = on,
+  %tagging-setup = {math/setup={mathml-SE,mathml-AF}, extra-modules={verbatim-mo,verbatim-af}},
+  % tagging-setup = {math/setup={mathml-AF}, extra-modules={verbatim-af}},
+  lang = en,
+  pdfversion = 1.7,
+  pdfstandard = ua-1,
+  % pdfstandard = a-4f %optional archival standard
+}
+\documentclass{article}
+
+\usepackage[otfmath]{newtx}
+\usepackage{unicode-math}
+\setmathfont{texgyretermes-math.otf}
+\usepackage[svgnames]{xcolor}
+\usepackage[colorlinks=true,plainpages=false,urlcolor=blue,citecolor=DarkSlateBlue,linkcolor=DarkRed]{hyperref}
+
+\usepackage{kantlipsum}
+
+\tagpdfsetup{math/alt/use}
+
+\title{Tagging Test}
+\author{Ettore Aldrovandi}
+
+\begin{document}
+\maketitle
+
+\kant[1][1-2]
+
+\[ F \colon \symcal{C} \longrightarrow \symcal{D} \]
+
+\kant[2][1-2]
+
+\end{document}

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Ettore Aldrovandi" />
+  <meta name="dcterms.date" content="2026-03-13" />
+  <title>Mathematical Accessibility Test</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Mathematical Accessibility Test</h1>
+<p class="author">Ettore Aldrovandi</p>
+<p class="date">2026-03-13</p>
+</header>
+<h2 id="introduction">Introduction</h2>
+<p>This document tests PDF/UA-2 accessibility tagging for mathematical
+content and figures. Mathematics pervades science: the famous Euler
+identity
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>i</mi><mi>π</mi></mrow></msup><mo>+</mo><mn>1</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">e^{i\pi} + 1 = 0</annotation></semantics></math>
+encapsulates the relationship between the five most important constants
+in mathematics. Similarly, the Gaussian integral
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><msup><mi>e</mi><mrow><mi>−</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><msqrt><mi>π</mi></msqrt></mrow><annotation encoding="application/x-tex">\int_{-\infty}^{\infty} e^{-x^2}\,dx = \sqrt{\pi}</annotation></semantics></math>
+appears throughout probability theory and physics.</p>
+<p>The interplay between algebra and analysis has driven much of modern
+mathematics. Formulae such as these encode deep structural relationships
+that underpin fields ranging from quantum mechanics to probability
+theory. Making such content accessible to all readers—including those
+relying on assistive technologies—is both a technical challenge and an
+ethical imperative for mathematical publishing.</p>
+<p>This document samples several areas of classical mathematics:
+elementary identities, complex analysis via the residue theorem, and
+differential geometry via Stokes’ theorem. Each section pairs formal
+definitions and theorem statements with illustrative computations. The
+final section demonstrates the inclusion of figures alongside tagged
+mathematical text, exercising the full range of PDF/UA-2 accessibility
+features.</p>
+<h2 id="mathematical-formulas">Mathematical Formulas</h2>
+<h3 id="display-equations">Display Equations</h3>
+<p>The Gaussian integral evaluates to:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mrow><mi>−</mi><mi>∞</mi></mrow><mi>∞</mi></msubsup><msup><mi>e</mi><mrow><mi>−</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><msqrt><mi>π</mi></msqrt><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\int_{-\infty}^{\infty} e^{-x^2}\,dx = \sqrt{\pi}.
+</annotation></semantics></math></p>
+<p>The geometric series converges for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|x| &lt; 1</annotation></semantics></math>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mo accent="false">∞</mo></munderover><msup><mi>x</mi><mi>k</mi></msup><mo>=</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>−</mo><mi>x</mi></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_{k=0}^{\infty} x^k = \frac{1}{1-x}.
+</annotation></semantics></math></p>
+<h3 id="aligned-equations">Aligned Equations</h3>
+<p>The binomial identities follow from expanding
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>±</mo><mi>b</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(a \pm b)^2</annotation></semantics></math>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>+</mo><mi>b</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>a</mi><mi>b</mi><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>−</mo><mi>b</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn><mi>a</mi><mi>b</mi><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>−</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><msup><mi>b</mi><mn>2</mn></msup><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+  (a + b)^{2}      &amp;= a^{2} + 2ab + b^{2},      \\
+  (a - b)^{2}      &amp;= a^{2} - 2ab + b^{2},      \\
+  (a + b)(a - b)   &amp;= a^{2} - b^{2}.
+\end{aligned}
+</annotation></semantics></math></p>
+<p>Identities of this kind recur throughout algebra and combinatorics,
+and generalise naturally to polynomial rings and other algebraic
+structures. The transition from scalar arithmetic to matrix arithmetic
+preserves much of this structure, though one must take care: unlike real
+numbers, matrices do not in general commute under multiplication, so the
+order of factors matters.</p>
+<h3 id="matrices">Matrices</h3>
+<p>A general
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2 \times 2</annotation></semantics></math>
+matrix and its determinant:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>a</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>b</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>c</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>d</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mrow><mi mathvariant="normal">det</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>a</mi><mi>d</mi><mo>−</mo><mi>b</mi><mi>c</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+A = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}, \qquad
+\det(A) = ad - bc.
+</annotation></semantics></math></p>
+<h2 id="the-residue-theorem">The Residue Theorem</h2>
+<p>Complex analysis studies functions
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>U</mi><mo>→</mo><mi mathvariant="double-struck">ℂ</mi></mrow><annotation encoding="application/x-tex">f\colon U \to \mathbb{C}</annotation></semantics></math>
+that are differentiable in the complex sense, known as
+<em>holomorphic</em> functions. Such functions are extraordinarily
+rigid: holomorphicity on an open set implies infinite differentiability
+and a convergent power series representation. Isolated points where this
+regularity breaks down are called <em>singularities</em>, and their
+local behaviour is captured precisely by the Laurent series
+expansion.</p>
+<div class="definition">
+<p><strong>Definition 3.1.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+be holomorphic on a punctured disk
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mo stretchy="false" form="prefix">|</mo><mi>z</mi><mo>−</mo><mi>a</mi><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">0 &lt; |z - a| &lt; r</annotation></semantics></math>.
+The <em>residue</em> of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+is the coefficient
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mrow><mi>−</mi><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">a_{-1}</annotation></semantics></math>
+in the Laurent expansion
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>n</mi><mo>=</mo><mi>−</mi><mi>∞</mi></mrow><mo accent="false">∞</mo></munderover><msub><mi>a</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo>−</mo><mi>a</mi><msup><mo stretchy="false" form="postfix">)</mo><mi>n</mi></msup><mo>,</mo></mrow><annotation encoding="application/x-tex">
+f(z) = \sum_{n=-\infty}^{\infty} a_n (z - a)^n,
+</annotation></semantics></math> equivalently,
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Res</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>f</mi><mo>,</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>π</mi><mi>i</mi></mrow></mfrac><msub><mo>∮</mo><mrow><mo stretchy="false" form="prefix">|</mo><mi>z</mi><mo>−</mo><mi>a</mi><mo stretchy="false" form="prefix">|</mo><mo>=</mo><mi>ε</mi></mrow></msub><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>z</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\operatorname{Res}(f, a)
+  = \frac{1}{2\pi i} \oint_{|z-a|=\varepsilon} f(z)\,dz.
+</annotation></semantics></math> For a simple pole, the residue
+simplifies to
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Res</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>f</mi><mo>,</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munder><mi mathvariant="normal">lim</mi><mrow><mi>z</mi><mo>→</mo><mi>a</mi></mrow></munder><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo>−</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\operatorname{Res}(f, a) = \lim_{z \to a}(z - a)f(z).
+</annotation></semantics></math></p>
+</div>
+<div class="theorem">
+<p><strong>Theorem 3.2</strong> (Residue Theorem)<strong>.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>⊂</mo><mi mathvariant="double-struck">ℂ</mi></mrow><annotation encoding="application/x-tex">U \subset \mathbb{C}</annotation></semantics></math>
+be open and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+holomorphic on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+except at finitely many isolated singularities
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>a</mi><mi>n</mi></msub><mo>∈</mo><mi>U</mi></mrow><annotation encoding="application/x-tex">a_1, \ldots, a_n \in U</annotation></semantics></math>.
+For any positively oriented simple closed contour
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+avoiding all
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>k</mi></msub><annotation encoding="application/x-tex">a_k</annotation></semantics></math>,
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∮</mo><mi>γ</mi></msub><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>z</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>i</mi><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mi>n</mi><mo stretchy="false" form="prefix">(</mo><mi>γ</mi><mo>,</mo><msub><mi>a</mi><mi>k</mi></msub><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">Res</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>f</mi><mo>,</mo><msub><mi>a</mi><mi>k</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\oint_{\gamma} f(z)\,dz
+  = 2\pi i \sum_{k=1}^{n} n(\gamma, a_k)\,\operatorname{Res}(f, a_k),
+</annotation></semantics></math> where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo stretchy="false" form="prefix">(</mo><mi>γ</mi><mo>,</mo><msub><mi>a</mi><mi>k</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">n(\gamma, a_k)</annotation></semantics></math>
+denotes the winding number of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
+about
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>k</mi></msub><annotation encoding="application/x-tex">a_k</annotation></semantics></math>.</p>
+</div>
+<h3 id="example">Example</h3>
+<p>Evaluate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><msub><mo>∮</mo><mrow><mo stretchy="false" form="prefix">|</mo><mi>z</mi><mo stretchy="false" form="prefix">|</mo><mo>=</mo><mn>2</mn></mrow></msub><mstyle displaystyle="true"><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><msup><mi>z</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\displaystyle I = \oint_{|z|=2} \dfrac{dz}{z^{2} - 1}</annotation></semantics></math>.</p>
+<p>The integrand has simple poles at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>±</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">z = \pm 1</annotation></semantics></math>,
+both enclosed by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>z</mi><mo stretchy="false" form="prefix">|</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">|z| = 2</annotation></semantics></math>.
+Computing each residue:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mrow><mi mathvariant="normal">Res</mi><mo>&#8289;</mo></mrow><mspace width="-0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mrow><msup><mi>z</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow></mfrac></mstyle><mo>,</mo><mspace width="0.278em"></mspace><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><munder><mi mathvariant="normal">lim</mi><mrow><mi>z</mi><mo>→</mo><mn>1</mn></mrow></munder><mfrac><mrow><mi>z</mi><mo>−</mo><mn>1</mn></mrow><mrow><msup><mi>z</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow></mfrac><mo>=</mo><munder><mi mathvariant="normal">lim</mi><mrow><mi>z</mi><mo>→</mo><mn>1</mn></mrow></munder><mfrac><mn>1</mn><mrow><mi>z</mi><mo>+</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mphantom><mo>−</mo></mphantom><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mrow><mi mathvariant="normal">Res</mi><mo>&#8289;</mo></mrow><mspace width="-0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mrow><msup><mi>z</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow></mfrac></mstyle><mo>,</mo><mspace width="0.278em"></mspace><mrow><mi>−</mi><mn>1</mn></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><munder><mi mathvariant="normal">lim</mi><mrow><mi>z</mi><mo>→</mo><mi>−</mi><mn>1</mn></mrow></munder><mfrac><mrow><mi>z</mi><mo>+</mo><mn>1</mn></mrow><mrow><msup><mi>z</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow></mfrac><mo>=</mo><munder><mi mathvariant="normal">lim</mi><mrow><mi>z</mi><mo>→</mo><mi>−</mi><mn>1</mn></mrow></munder><mfrac><mn>1</mn><mrow><mi>z</mi><mo>−</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mi>−</mi><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+  \operatorname{Res}\!\left(\tfrac{1}{z^{2}-1},\; 1\right)
+    &amp;= \lim_{z \to 1}  \frac{z - 1}{z^{2}-1}
+     = \lim_{z \to 1}  \frac{1}{z+1}
+     = \phantom{-}\frac{1}{2}, \\
+  \operatorname{Res}\!\left(\tfrac{1}{z^{2}-1},\; {-1}\right)
+    &amp;= \lim_{z \to -1} \frac{z + 1}{z^{2}-1}
+     = \lim_{z \to -1} \frac{1}{z-1}
+     = -\frac{1}{2}.
+\end{aligned}
+</annotation></semantics></math> The residues sum to zero, so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>i</mi><mo>⋅</mo><mn>0</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">I = 2\pi i \cdot 0 = 0</annotation></semantics></math>.</p>
+<p>The residue theorem is one of the most powerful computational tools
+in complex analysis, reducing contour integrals over closed curves to
+finite algebraic sums. Its applications extend well beyond pure
+mathematics: it underlies partial fraction methods in signal processing,
+closed-form evaluation of real improper integrals, and aspects of the
+spectral theory of linear operators. The next section turns to a related
+but broader integration theorem, formulated in the language of
+differential forms on smooth manifolds.</p>
+<h2 id="stokes-theorem">Stokes’ Theorem</h2>
+<p>Stokes’ theorem is the central result of the calculus of differential
+forms, unifying the classical theorems of Green, Gauss, and Stokes under
+a single statement. Its formulation requires the language of smooth
+manifolds and the exterior derivative
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>,
+which generalises the gradient, curl, and divergence of vector calculus
+to arbitrary dimension and codimension.</p>
+<div class="theorem">
+<p><strong>Theorem 4.1</strong> (Stokes’ Theorem — General
+Form)<strong>.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ω</mi><annotation encoding="application/x-tex">\Omega</annotation></semantics></math>
+be a smooth oriented
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-manifold
+with boundary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∂</mi><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\partial\Omega</annotation></semantics></math>,
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
+be a smooth
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(k-1)</annotation></semantics></math>-form
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ω</mi><annotation encoding="application/x-tex">\Omega</annotation></semantics></math>.
+Then
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∫</mo><mrow><mi>∂</mi><mi mathvariant="normal">Ω</mi></mrow></msub><mi>ω</mi><mo>=</mo><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mi>d</mi><mi>ω</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\int_{\partial\Omega} \omega = \int_{\Omega} d\omega,
+</annotation></semantics></math> where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+denotes the exterior derivative.</p>
+</div>
+<p>In classical vector calculus, taking
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ω</mi><annotation encoding="application/x-tex">\Omega</annotation></semantics></math>
+to be a surface
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>⊂</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">S \subset \mathbb{R}^{3}</annotation></semantics></math>
+with boundary curve
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∂</mi><mi>S</mi></mrow><annotation encoding="application/x-tex">\partial S</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><mi mathvariant="bold-italic">𝑭</mi><mo>⋅</mo><mi>d</mi><mi mathvariant="bold-italic">𝒓</mi></mrow><annotation encoding="application/x-tex">\omega = \mathbf{F} \cdot d\mathbf{r}</annotation></semantics></math>
+recovers the familiar vector form:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∮</mo><mrow><mi>∂</mi><mi>S</mi></mrow></msub><mi mathvariant="bold-italic">𝑭</mi><mo>⋅</mo><mi>d</mi><mi mathvariant="bold-italic">𝒓</mi><mo>=</mo><msub><mo>∬</mo><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>∇</mi><mo>×</mo><mi mathvariant="bold-italic">𝑭</mi><mo stretchy="false" form="postfix">)</mo><mo>⋅</mo><mi>d</mi><mi mathvariant="bold-italic">𝑺</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\oint_{\partial S} \mathbf{F} \cdot d\mathbf{r}
+  = \iint_{S} (\nabla \times \mathbf{F}) \cdot d\mathbf{S}.
+</annotation></semantics></math></p>
+<div class="corollary">
+<p><strong>Corollary 4.2</strong> (Green’s Theorem)<strong>.</strong>
+For a positively oriented simple closed curve
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∂</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">\partial D</annotation></semantics></math>
+bounding a region
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>⊂</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">D \subset \mathbb{R}^{2}</annotation></semantics></math>
+and smooth functions
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math>,
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∮</mo><mrow><mi>∂</mi><mi>D</mi></mrow></msub><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><mi>P</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>+</mo><mi>Q</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>y</mi><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo><mo>=</mo><msub><mo>∬</mo><mi>D</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>∂</mi><mi>Q</mi></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo>−</mo><mfrac><mrow><mi>∂</mi><mi>P</mi></mrow><mrow><mi>∂</mi><mi>y</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>d</mi><mi>x</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>y</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\oint_{\partial D} \bigl(P\,dx + Q\,dy\bigr)
+  = \iint_{D} \left(\frac{\partial Q}{\partial x}
+                     - \frac{\partial P}{\partial y}\right)dx\,dy.
+</annotation></semantics></math></p>
+</div>
+<p>The theorems presented in the preceding sections are best understood
+through geometric intuition: closed contours winding around
+singularities in the complex plane, and surfaces bounded by oriented
+curves in three-dimensional space. The figure below provides a visual
+anchor for the analytic statement of Stokes’ theorem.</p>
+<h2 id="figures">Figures</h2>
+<h3 id="surface-with-boundary">Surface with Boundary</h3>
+<p>In the setting of Stokes’ theorem, the surface
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+may be any smooth oriented
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math>-manifold
+with boundary. The boundary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∂</mi><mi>S</mi></mrow><annotation encoding="application/x-tex">\partial S</annotation></semantics></math>
+inherits an orientation from that of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
+conventionally determined by the right-hand rule relative to the outward
+normal. The precise shape of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+is immaterial to the theorem—only the relationship between
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∂</mi><mi>S</mi></mrow><annotation encoding="application/x-tex">\partial S</annotation></semantics></math>
+governs the equality of the two integrals.</p>
+<p>Figure 1 depicts a surface
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+with boundary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∂</mi><mi>S</mi></mrow><annotation encoding="application/x-tex">\partial S</annotation></semantics></math>,
+the geometric setting of Stokes’ theorem.</p>
+<figure>
+<img src="alphatest.png"
+title="A surface S with boundary (placeholder)."
+alt="W3C PNG test image showing the word Testing with colour fades and alpha transparency, used here as a sample image." />
+<figcaption aria-hidden="true">W3C PNG test image showing the word
+Testing with colour fades and alpha transparency, used here as a sample
+image.</figcaption>
+</figure>
+</body>
+</html>

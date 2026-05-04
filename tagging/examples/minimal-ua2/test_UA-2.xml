@@ -1,0 +1,144 @@
+<PDF>
+ <StructTreeRoot>
+  <Document xmlns="http://iso.org/pdf2/ssn"
+     id="ID.002"
+    >
+   <text-unit xmlns="https://www.latex-project.org/ns/dflt"
+      id="ID.005"
+      rolemaps-to="Part"
+     >
+    <Title xmlns="http://iso.org/pdf2/ssn"
+       id="ID.006"
+      >
+     <text xmlns="https://www.latex-project.org/ns/dflt"
+        id="ID.007"
+        xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+        Layout:TextAlign="Center"
+        rolemaps-to="P"
+       >
+      <?MarkedContent page="1" ?>Tagging Test
+     </text>
+    </Title>
+    <text xmlns="https://www.latex-project.org/ns/dflt"
+       id="ID.008"
+       xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+       Layout:TextAlign="Center"
+       rolemaps-to="P"
+      >
+     <?MarkedContent page="1" ?> Ettore Aldrovandi
+    </text>
+    <text xmlns="https://www.latex-project.org/ns/dflt"
+       id="ID.009"
+       xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+       Layout:TextAlign="Center"
+       rolemaps-to="P"
+      >
+     <?MarkedContent page="1" ?>February 20, 2026
+    </text>
+   </text-unit>
+   <text-unit xmlns="https://www.latex-project.org/ns/dflt"
+      id="ID.010"
+      rolemaps-to="Part"
+     >
+    <text xmlns="https://www.latex-project.org/ns/dflt"
+       id="ID.011"
+       xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+       Layout:TextAlign="Justify"
+       rolemaps-to="P"
+      >
+     <?MarkedContent page="1" ?>As any dedicated reader can clearly see, the Ideal of practical reason is a represen
+     <?MarkedContent page="1" ?>tation of, as far as I know, the things in themselves; as I have shown elsewhere, the phenomena should only be used as a canon for our understanding. The paralogisms of practical reason are what first give rise to the architectonic of practical reason.
+    </text>
+   </text-unit>
+   <text-unit xmlns="https://www.latex-project.org/ns/dflt"
+      id="ID.012"
+      rolemaps-to="Part"
+     >
+    <Formula xmlns="http://iso.org/pdf2/ssn"
+       id="ID.013"
+       title="equation*"
+       alt="LaTeX formula starts \begin {equation*} F \colon \symcal {C} \longrightarrow \symcal {D} \end {equation*} LaTeX formula ends "
+       af="mathml-1.xml"
+       xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+       Layout:Placement="Block"
+      >
+      <AssociatedFile name="mathml-1.xml" xmlns="">
+      <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"> <mi>𝐹</mi> <mspace width="0.111em"/> <mrow/> <mspace width="-0.167em"/> <mspace width="0.167em"/> <mi mathvariant="normal">∶</mi> <mspace width="0.333em"/> <mi>𝒞</mi> <mo lspace="0.278em" rspace="0.278em" stretchy="false">⟶</mo> <mi>𝒟</mi> </math>
+      </AssociatedFile>
+     <math xmlns="http://www.w3.org/1998/Math/MathML"
+        id="ID.014"
+        display="block"
+       >
+      <mi xmlns="http://www.w3.org/1998/Math/MathML"
+         id="ID.015"
+        >
+       <?MarkedContent page="1" ?>𝐹
+      </mi>
+      <mspace xmlns="http://www.w3.org/1998/Math/MathML"
+         id="ID.016"
+         width="0.111em"
+        >
+      </mspace>
+      <mrow xmlns="http://www.w3.org/1998/Math/MathML"
+         id="ID.017"
+        >
+      </mrow>
+      <mspace xmlns="http://www.w3.org/1998/Math/MathML"
+         id="ID.018"
+         width="-0.167em"
+        >
+      </mspace>
+      <mspace xmlns="http://www.w3.org/1998/Math/MathML"
+         id="ID.019"
+         width="0.167em"
+        >
+      </mspace>
+      <mi xmlns="http://www.w3.org/1998/Math/MathML"
+         id="ID.020"
+         mathvariant="normal"
+        >
+       <?MarkedContent page="1" ?>∶
+      </mi>
+      <mspace xmlns="http://www.w3.org/1998/Math/MathML"
+         id="ID.021"
+         width="0.333em"
+        >
+      </mspace>
+      <mi xmlns="http://www.w3.org/1998/Math/MathML"
+         id="ID.022"
+        >
+       <?MarkedContent page="1" ?>𝒞
+      </mi>
+      <mo xmlns="http://www.w3.org/1998/Math/MathML"
+         id="ID.023"
+         lspace="0.278em"
+         rspace="0.278em"
+         stretchy="false"
+        >
+       <?MarkedContent page="1" ?>⟶
+      </mo>
+      <mi xmlns="http://www.w3.org/1998/Math/MathML"
+         id="ID.024"
+        >
+       <?MarkedContent page="1" ?>𝒟
+      </mi>
+     </math>
+    </Formula>
+   </text-unit>
+   <text-unit xmlns="https://www.latex-project.org/ns/dflt"
+      id="ID.025"
+      rolemaps-to="Part"
+     >
+    <text xmlns="https://www.latex-project.org/ns/dflt"
+       id="ID.026"
+       xmlns:Layout="http://iso.org/pdf/ssn/Layout"
+       Layout:TextAlign="Justify"
+       rolemaps-to="P"
+      >
+     <?MarkedContent page="1" ?>Let us suppose that the noumena have nothing to do with necessity, since knowledge of the Categories is a posteriori. Hume tells us that the transcendental unity of apper
+     <?MarkedContent page="1" ?>ception can not take account of the discipline of natural reason, by means of analytic unity.
+    </text>
+   </text-unit>
+  </Document>
+ </StructTreeRoot>
+</PDF>

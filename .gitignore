@@ -1,0 +1,17 @@
+# Private / out-of-scope
+test_cases/
+
+# Claude Code per-machine state
+.claude/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*~
+.#*
+\#*\#
+*.swp
+*.swo
+
+# Per-pipeline build artifacts are handled by each subdirectory's own .gitignore
+# (tagging/.gitignore, latexml/.gitignore, tex4ht/.gitignore, markdown/.gitignore).

@@ -1,0 +1,20 @@
+# Node (puppeteer is gone, but guard against accidental reinstall)
+node_modules/
+package.json
+package-lock.json
+
+# LaTeXML build artifacts — all regenerated at runtime by latexmlc / build.sh
+*.latexml.log
+LaTeXML.cache
+LaTeXML.css
+ltx-*.css
+# latex-style.css is canonical at latexml/latex-style.css; the per-example
+# copies that latexmlc emits next to each HTML are byproducts.
+examples/*/latex-style.css
+
+# General LaTeX intermediates
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz

@@ -1,0 +1,224 @@
+/* style.css — Pandoc HTML styling, adapted from latexml/latex-style.css
+   Provides the same visual design system for the Markdown→HTML workflow */
+
+/* ── CSS Custom Properties ── */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --text-muted: #555555;
+  --link-color: #2563eb;
+  --link-hover: #1d4ed8;
+  --border-color: #e5e5e5;
+  --theorem-bg: #f8f8f8;
+  --definition-bg: #f0f4ff;
+  --code-bg: #f5f5f5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --link-color: #60a5fa;
+    --link-hover: #93bbfd;
+    --border-color: #333333;
+    --theorem-bg: #242424;
+    --definition-bg: #1e2433;
+    --code-bg: #2a2a2a;
+  }
+}
+
+/* ── Base ── */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  max-width: 80ch;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  font-family: "Latin Modern Roman", "Computer Modern", Georgia,
+               "Times New Roman", Times, serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  text-rendering: optimizeLegibility;
+}
+
+/* ── Headings ── */
+h1.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-align: center;
+  color: var(--text-color);
+}
+
+p.author {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+p.date {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.3rem;
+  color: var(--text-color);
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+/* ── Paragraphs ── */
+p {
+  margin-bottom: 0.75rem;
+  text-align: justify;
+}
+
+/* ── Links ── */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* ── Math ── */
+.math {
+  color: var(--text-color);
+}
+
+.math.display {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  overflow-x: auto;
+}
+
+/* ── Theorem-like environments (pandoc fenced divs) ── */
+.theorem,
+.definition,
+.corollary {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--border-color);
+  border-radius: 2px;
+}
+
+/* Theorem & Corollary: italic body */
+.theorem,
+.corollary {
+  background-color: var(--theorem-bg);
+  font-style: italic;
+}
+
+/* Definition: upright body */
+.definition {
+  background-color: var(--definition-bg);
+  font-style: normal;
+}
+
+/* Bold labels inside theorem divs stay upright */
+.theorem strong,
+.definition strong,
+.corollary strong {
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Math inside italic theorems should stay upright */
+.theorem .math,
+.corollary .math {
+  font-style: normal;
+}
+
+/* ── Figures ── */
+figure {
+  margin: 2rem auto;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
+/* ── Footer ── */
+footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ── Responsive: mobile ── */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 1rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  h1.title {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  .theorem,
+  .definition,
+  .corollary {
+    padding: 0.75rem 0.75rem;
+  }
+
+  .math.display {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ── Print ── */
+@media print {
+  body {
+    max-width: none;
+    padding: 0;
+  }
+
+  .theorem,
+  .definition,
+  .corollary {
+    border-left: 2px solid #000;
+    background: none;
+  }
+}

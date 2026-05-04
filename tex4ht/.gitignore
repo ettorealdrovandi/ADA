@@ -1,0 +1,21 @@
+# tex4ht / make4ht intermediates — all regenerated at runtime
+*.4ct
+*.4tc
+*.aux
+*.dvi
+*.idv
+*.lg
+*.log
+*.tmp
+*.xref
+*.toc
+*.out
+
+# SVG figures generated from TikZ (e.g. test_accessibility0x.svg)
+*[0-9]x.svg
+
+# Per-example CSS:
+#   - tex4ht emits <basename>.css next to the HTML for document-specific styles
+#   - build.sh copies style.css next to the HTML so the <link> resolves
+# Both are regenerated at runtime; the canonical style.css lives at tex4ht/style.css.
+examples/*/*.css
