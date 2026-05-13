@@ -19,6 +19,7 @@ A browsable documentation site is published at
 | Path | What it does |
 |---|---|
 | [`tagging/`](tagging/) | PDF/UA accessibility examples using LuaLaTeX + `tagpdf`. Minimal UA-1 / UA-2 documents and one longer worked example. |
+| [`tagging-real-world/`](tagging-real-world/) | Defensive `build.sh` pipeline for real-world legacy LaTeX → PDF/UA-2 without modifying the originals. Ships the pipeline only — bring your own input. |
 | [`latexml/`](latexml/) | LaTeX-to-HTML conversion via LaTeXML, with light a11y post-processing. |
 | [`tex4ht/`](tex4ht/) | LaTeX-to-HTML conversion via TeX4ht (`make4ht`). Each example commits both a MathJax- and MathML-rendered HTML for direct comparison. |
 | [`markdown/`](markdown/) | Markdown-to-HTML conversion via Pandoc. **Single-file Markdown only — multi-file workflows out of scope.** |

@@ -10,12 +10,12 @@ This is a LaTeX research/experimentation repository focused on **accessible PDF 
 - **`latexml/`** — LaTeX-to-HTML conversion experiments using LaTeXML. Examples live under `latexml/examples/{minimal,accessibility,research-article}/`; see `latexml/README.md` for the overview.
 - **`tex4ht/`** — LaTeX-to-HTML conversion experiments using TeX4ht (`make4ht`). Examples live under `tex4ht/examples/{minimal,accessibility}/`; see `tex4ht/README.md` for the overview. Each example commits both a MathJax- and a MathML-rendered output.
 - **`markdown/`** — Markdown-to-HTML conversion experiments using Pandoc. Examples live under `markdown/examples/{minimal,accessibility}/`; see `markdown/README.md` for the overview. **Scope:** intentionally limited to single-file Markdown projects — multi-file workflows (book chapters, citations, custom Lua filters) are out of scope and would be a different project.
-- **`test_cases/`** — Real-world, messier LaTeX sources (course notes, etc.) plus `test_cases/build.sh`, the defensive pipeline that compiles them into accessible tagged PDFs. The originals are never edited; iterate on `test_cases/build.sh` instead. **Gitignored at the repo root** — kept private locally, not pushed to the public repo.
+- **`tagging-real-world/`** — Defensive build pipeline for real-world legacy LaTeX (course notes, multi-file `amsbook` books, `$$…$$` plain-TeX math, etc.). Ships `build.sh` + `README.md`; **`examples/` is gitignored** so local test corpora stay private. The originals are never edited; iterate on `tagging-real-world/build.sh` instead.
 - **`docs/`** — Jekyll source for the GitHub Pages site at `https://ettorealdrovandi.github.io/ADA/`. Built with Jekyll 4 + the `just-the-docs` gem; deployed by `.github/workflows/pages.yml` (Pages source = "GitHub Actions"). The docs/ pages are a thin overview layer and intentionally summarize (not duplicate) the per-pipeline READMEs. For local preview: `cd docs && bundle install && bundle exec jekyll serve`.
 
 ## Compilation
 
-### Tagged PDFs (tagging/ and test_cases/)
+### Tagged PDFs (tagging/ and tagging-real-world/)
 
 All tagged documents must be compiled with **LuaLaTeX** (not pdflatex or xelatex). Use the development version for best tagging support. We always enable **synctex** for good interplay with previewers.
 
@@ -28,14 +28,16 @@ lualatex-dev -synctex=1 <filename>.tex
 latexmk -lualatex -lualatex=lualatex-dev -synctex=1 <filename>.tex
 ```
 
-For real-world sources in `test_cases/`, use the defensive pipeline:
+For real-world sources, use the defensive pipeline:
 
 ```sh
-./test_cases/build.sh <input.tex> [output-dir]                 # default output-dir: <input_dir>/tagged_output
-INCLUDE_ONLY=graph_intro,gr_connect ./test_cases/build.sh ...  # selective subfile compile via \includeonly
+./tagging-real-world/build.sh <input.tex> [output-dir]                          # default output-dir: <input_dir>/tagged_output
+./tagging-real-world/build.sh --dry-run <input.tex>                             # show diff vs. originals, don't compile
+./tagging-real-world/build.sh --stop-after=6 <input.tex>                        # apply phases 1–6, leave the partial output
+INCLUDE_ONLY=graph_intro,gr_connect ./tagging-real-world/build.sh <input.tex>   # selective subfile compile via \includeonly
 ```
 
-`test_cases/build.sh` copies sources to a fresh output dir (originals untouched), applies ~10 transformation phases (see *Defensive build pipeline* below), then runs `latexmk -lualatex=lualatex-dev`.
+`tagging-real-world/build.sh` copies sources to a fresh output dir (originals untouched), applies 13 transformation phases (see *Defensive build pipeline* below), then runs `latexmk -lualatex=lualatex-dev` and a light PDF/UA conformance check. CLI: `--only=N[,N…]`, `--skip=N[,N…]`, `--stop-after=N`, `--dry-run`.
 
 ### LaTeXML HTML output (latexml/)
 
@@ -79,23 +81,25 @@ Math font setup uses `unicode-math` with OpenType fonts. The kept examples and t
 
 **UA-1 vs UA-2**: `examples/minimal-ua1/test_UA-1.tex` uses UA-1 with `math/alt/use` only (no MathML embedding); the UA-2 examples (`examples/minimal-ua2/test_UA-2.tex`, `examples/full-document/test_accessibility{,_dyslexic}.tex`) embed MathML via `mathml-SE,mathml-AF`.
 
-### Defensive build pipeline (`test_cases/build.sh`)
+### Defensive build pipeline (`tagging-real-world/build.sh`)
 
-`test_cases/` holds real LaTeX (e.g. course-notes books split into subfiles) that breaks the tagging infrastructure if compiled as-is. `test_cases/build.sh` is the workaround. It copies the input tree to an output directory and applies these phases in order — never modifying the originals:
+`tagging-real-world/` holds the defensive pipeline for real LaTeX (e.g. course-notes books split into subfiles) that breaks the tagging infrastructure if compiled as-is. `tagging-real-world/build.sh` copies the input tree to an output directory and applies these phases in order — never modifying the originals:
 
 1. **Setup** — copy `*.tex`, `*.png`, `*.jpg`, `*.pdf`, `*.svg`, `*.PNG` into `tagged_output/`.
 2. **Strip sub-file standalone preambles** — subfiles wrap their preamble + `\begin{document}` in `\begin{comment}…\end{comment}` (some are broken with `%\begin{comment}`); the script deletes everything from BOF through `\end{comment}` and removes trailing `\end{document}`.
 3. **`\input` → `\include`** — enables `\includeonly` for selective compilation; injects `\includeonly{…}` if `INCLUDE_ONLY` is set; strips redundant `\vfill\eject` after `\include`.
 4. **`amsbook` → `book`** — `amsbook`'s `\@starttoc`/`\@tocline`/`\@tocwrite` internals conflict with the tagging patches to `\chapter*`, `\contentsline`, etc. Adds `\usepackage{amsmath,mathtools,amsthm}` since `book` doesn't load them implicitly.
 5. **Strip structural hacks** — remove `\@tocline` redefinitions of `\l@section` etc.; remove the `enumerate` package and strip optional args from `\begin{enumerate}[…]` (the block module rejects them as unknown keys).
-6. **Clean preamble** — remove `\font\sans=cmss10`, `\input xypic`, `\usepackage[all]{xy}`, comma-listed `,xypic`, `nopageno`, `eucal`, `\thispagestyle{empty}`; dedupe `graphicx` and `xcolor`; add `[normalem]` to `ulem`.
-7. **Inject `\DocumentMetadata`** — `tagging=on`, `tagging-setup={math/setup={mathml-SE,mathml-AF}, extra-modules={verbatim-mo,verbatim-af}}`, `pdfstandard=ua-2`, `pdfversion=2.0`, `lang=en` (skipped if already present).
-8. **Inject unicode-math + font setup** — after the `amssymb` line: `\usepackage{unicode-math}`, `\setmainfont{TeX Gyre Termes}`, `\setmathfont{texgyretermes-math.otf}`, `\tagpdfsetup{math/alt/use}`.
-9. **Math font commands** — `\mathbb` → `\symbb`, `\mathcal` → `\symcal`, `\mathfrak` → `\symfrak`, `\mathscr` → `\symscr` across all `.tex` files.
-10. **Colorblind-friendly colors** — add `\usepackage[OkabeIto,keep-defaults]{colorblind}` after `xcolor`; remap `\definecolor{T}{rgb}{0,.5,0}` → `\colorlet{T}{OI5}` and the corresponding `F` → `OI6`.
-11. **Compile** — `latexmk -lualatex -lualatex="lualatex-dev -interaction=nonstopmode" -synctex=1`.
+6. **Legacy LaTeX fixes** — patches patterns that `pdflatex` tolerated but `lualatex-dev` + tagging do not. Sub-steps: (a) `$$…$$` → `\[…\]` via an inline-math-aware pair-toggle awk (preserves the `$X$$Y$` typo case); (b) `\\\\` inside `align`/`align*` collapsed to `\\`; (c) standalone `\hfill\\` / `\hfill\\\\` / bare `\hfill` lines deleted; (d) trailing `\\` at end of a line removed when the next line is blank or begins with `\item`/`\end{}`/`\begin{}`/sectioning commands; (e) trailing `\\` on `\item` lines removed; (e2) `\\` immediately after `\]` or `\)` removed; (f) standalone `\vfill\eject` → `\clearpage`; (g) manual `\setlength{\textwidth/textheight/topmargin/oddsidemargin/evensidemargin}` replaced with a single `\usepackage[paper=letterpaper,total={6in,8.5in}]{geometry}`; (h) inline math `$X$` inside section-level commands wrapped with `\texorpdfstring{$X$}{}` to keep `\mitOmega` and friends out of the `.aux`/TOC.
+7. **Clean preamble** — remove `\font\sans=cmss10`, `\input xypic`, `\usepackage[all]{xy}`, comma-listed `,xypic`, `nopageno`, `eucal`, `\thispagestyle{empty}`; dedupe `graphicx` and `xcolor`; add `[normalem]` to `ulem`.
+8. **Inject `\DocumentMetadata`** — `tagging=on`, `tagging-setup={math/setup={mathml-SE,mathml-AF}, extra-modules={verbatim-mo,verbatim-af}}`, `pdfstandard=ua-2`, `pdfversion=2.0`, `lang=en` (skipped if already present).
+9. **Inject unicode-math + font setup** — after the `amssymb` line: `\usepackage{unicode-math}`, `\setmainfont{TeX Gyre Termes}`, `\setmathfont{texgyretermes-math.otf}`, `\tagpdfsetup{math/alt/use}`.
+10. **Math font commands** — `\mathbb` → `\symbb`, `\mathcal` → `\symcal`, `\mathfrak` → `\symfrak`, `\mathscr` → `\symscr` across all `.tex` files.
+11. **Colorblind-friendly colors** — add `\usepackage[OkabeIto,keep-defaults]{colorblind}` after `xcolor`; remap `\definecolor{T}{rgb}{0,.5,0}` → `\colorlet{T}{OI5}` and the corresponding `F` → `OI6`.
+12. **Compile** — `latexmk -lualatex -lualatex="lualatex-dev -interaction=nonstopmode" -synctex=1`.
+13. **PDF/UA validation** — light conformance check: reads PDF metadata via `pdfinfo` (if installed) and optionally runs `verapdf --flavour ua2` (if installed). Neither tool is a hard dependency.
 
-When a `test_cases/` source fails to build accessibly, fix it by adding/adjusting a phase in `test_cases/build.sh` rather than editing the original `.tex`.
+The script ships with `--only=N[,N…]`, `--skip=N[,N…]`, `--stop-after=N`, and `--dry-run` flags for debugging which phase introduced a problem. Phases are idempotent: re-running on a partially-built output directory is safe. When a real-world source fails to build accessibly, fix it by adding/adjusting a phase in `tagging-real-world/build.sh` rather than editing the original `.tex`.
 
 ### LaTeXML (latexml/)
 

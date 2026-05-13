@@ -18,6 +18,7 @@ via LuaLaTeX + `tagpdf`, plus HTML conversion via LaTeXML, TeX4ht
 | Pipeline | What it does |
 |---|---|
 | [Tagging (PDF/UA)](pipelines/tagging.html) | LuaLaTeX + `tagpdf` → tagged PDF/UA-1, PDF/UA-2 |
+| [Tagging — real-world](pipelines/tagging-real-world.html) | Defensive build script for legacy LaTeX → PDF/UA-2 without modifying the originals |
 | [LaTeXML](pipelines/latexml.html) | LaTeX → HTML5 + MathML via LaTeXML |
 | [TeX4ht](pipelines/tex4ht.html) | LaTeX → HTML5 via `make4ht` |
 | [Markdown](pipelines/markdown.html) | Single-file Markdown → HTML5 via Pandoc |

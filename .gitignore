@@ -1,8 +1,11 @@
-# Private / out-of-scope
-test_cases/
-
 # Private / testing
 tests/
+
+# tagging-real-world/ publishes the pipeline itself (build.sh, README) but
+# the real test corpus stays local. Per-example folders, output dirs, and
+# stray *.tex / image trees underneath examples/ are gitignored.
+tagging-real-world/examples/
+tagging-real-world/**/tagged_output/
 
 # Claude Code per-machine state
 .claude/

@@ -1,7 +1,7 @@
 ---
 title: TeX4ht
 parent: Pipelines
-nav_order: 3
+nav_order: 4
 ---
 
 # TeX4ht — LaTeX → HTML5 via `make4ht`

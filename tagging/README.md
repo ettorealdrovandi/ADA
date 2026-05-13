@@ -53,15 +53,17 @@ lualatex-dev -synctex=1 <basename>.tex
   font path. The `.tex` source currently hard-codes a macOS user
   font path; see that example's README.
 
-## A note on `test_cases/`
+## When your source isn't tagging-ready
 
-A sibling directory `../test_cases/` holds real-world LaTeX sources
-(course notes, etc.) that *do* require preprocessing before they can be
-compiled with the tagging infrastructure. The defensive pipeline that
-performs that preprocessing lives at `../test_cases/build.sh` and is
-documented in the project's top-level `CLAUDE.md`. It is not relevant
-to the curated examples in this directory, which compile cleanly with
-`lualatex-dev` or `latexmk`.
+The examples in this directory are deliberately curated to compile
+cleanly with `lualatex-dev` or `latexmk` as shown above. If you have a
+real-world legacy LaTeX source that needs preprocessing first — for
+example, an `amsbook`-class book split into many `\input`-ed subfiles,
+or a manuscript that uses plain-TeX `$$...$$` display math, `xypic`,
+manual `\setlength` margins, and so on — see the sibling directory
+[`../tagging-real-world/`](../tagging-real-world/), which ships a
+defensive `build.sh` that handles those legacy patterns without
+modifying the originals.
 
 ## Validating a tagged PDF
 

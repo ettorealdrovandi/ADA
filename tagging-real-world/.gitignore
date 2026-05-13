@@ -1,0 +1,13 @@
+*.aux
+*.log
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.toc
+*.out
+*.lof
+*.lot
+*.bbl
+*.blg
+*-luamml-mathml.html
+tagged_output/

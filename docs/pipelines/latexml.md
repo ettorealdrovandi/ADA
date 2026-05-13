@@ -1,7 +1,7 @@
 ---
 title: LaTeXML
 parent: Pipelines
-nav_order: 2
+nav_order: 3
 ---
 
 # LaTeXML — LaTeX → HTML5 + MathML

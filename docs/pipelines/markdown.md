@@ -1,7 +1,7 @@
 ---
 title: Markdown (Pandoc)
 parent: Pipelines
-nav_order: 4
+nav_order: 5
 ---
 
 # Markdown — Pandoc → HTML5
