@@ -271,12 +271,14 @@ if phase_enabled 6; then
     # 6a. $$ ... $$ → \[ ... \] (plain-TeX display math, deprecated; broken
     # under tagging). Pair-toggle awk that tracks inline-math state so it
     # can distinguish display-math $$ from a close-then-open inline ($X$$Y$
-    # typo). Skips inside verbatim/lstlisting/comment envs and inside LaTeX
-    # % line comments. \X escape sequences are passed through opaquely.
+    # typo). Skips inside verbatim-, code-, and picture-family envs (where
+    # $$ may be a literal token rather than display math — e.g. forest's
+    # [$$ ...] empty-node placeholder syntax) and inside LaTeX % line
+    # comments. \X escape sequences are passed through opaquely.
     awk_inplace '
       BEGIN { in_verb = 0; in_math = 0; tog = 0 }
-      /\\begin\{(verbatim|lstlisting|comment)/ { in_verb++; print; next }
-      /\\end\{(verbatim|lstlisting|comment)/   { if (in_verb > 0) in_verb--; print; next }
+      /\\begin\{(verbatim|Verbatim|BVerbatim|LVerbatim|SaveVerbatim|lstlisting|minted|alltt|comment|forest|tikzpicture)\*?\}/ { in_verb++; print; next }
+      /\\end\{(verbatim|Verbatim|BVerbatim|LVerbatim|SaveVerbatim|lstlisting|minted|alltt|comment|forest|tikzpicture)\*?\}/   { if (in_verb > 0) in_verb--; print; next }
       {
         if (in_verb > 0) { print; next }
         line = $0; out = ""; i = 1; L = length(line)
