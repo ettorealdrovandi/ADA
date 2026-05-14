@@ -77,7 +77,7 @@ safe.
 | 9 | Inject `unicode-math` + font setup | `\usepackage{unicode-math}`, TeX Gyre Termes / `texgyretermes-math.otf`, `\tagpdfsetup{math/alt/use}`. Skipped if already present. |
 | 10 | Math font commands | `\mathbb` → `\symbb`, `\mathcal` → `\symcal`, `\mathfrak` → `\symfrak`, `\mathscr` → `\symscr`. Required because `unicode-math` clashes with the legacy `\math*` commands. |
 | 11 | Colorblind-friendly colors | Adds `\usepackage[OkabeIto,keep-defaults]{colorblind}` after `xcolor`; remaps the conventional `T` (green) and `F` (red) colors to Okabe-Ito `OI5` / `OI6`. |
-| 12 | Compile | `latexmk -lualatex -lualatex="lualatex-dev -interaction=nonstopmode" -synctex=1`. |
+| 12 | Compile | `latexmk -lualatex -lualatex=lualatex-dev -synctex=1`. Interactive mode (no `-interaction=nonstopmode`) so real errors stop the build rather than scrolling past silently. |
 | 13 | PDF/UA validation | Light conformance check: reads PDF metadata via `pdfinfo` (if installed) and optionally runs `verapdf --flavour ua1` or `--flavour ua2` (matching the requested build). Neither tool is a hard dependency. |
 
 ### Phase 6 — Legacy LaTeX fixes (catalog)

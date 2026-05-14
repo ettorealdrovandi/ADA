@@ -97,7 +97,7 @@ Math font setup uses `unicode-math` with OpenType fonts. The kept examples and t
 9. **Inject unicode-math + font setup** — after the `amssymb` line: `\usepackage{unicode-math}`, `\setmainfont{TeX Gyre Termes}`, `\setmathfont{texgyretermes-math.otf}`, `\tagpdfsetup{math/alt/use}`.
 10. **Math font commands** — `\mathbb` → `\symbb`, `\mathcal` → `\symcal`, `\mathfrak` → `\symfrak`, `\mathscr` → `\symscr` across all `.tex` files.
 11. **Colorblind-friendly colors** — add `\usepackage[OkabeIto,keep-defaults]{colorblind}` after `xcolor`; remap `\definecolor{T}{rgb}{0,.5,0}` → `\colorlet{T}{OI5}` and the corresponding `F` → `OI6`.
-12. **Compile** — `latexmk -lualatex -lualatex="lualatex-dev -interaction=nonstopmode" -synctex=1`.
+12. **Compile** — `latexmk -lualatex -lualatex=lualatex-dev -synctex=1`. `lualatex-dev` is left in interactive mode so real errors surface during the compile phase instead of being silently skipped past.
 13. **PDF/UA validation** — light conformance check: reads PDF metadata via `pdfinfo` (if installed) and optionally runs `verapdf --flavour ua1` or `--flavour ua2` (matching the build flavour, if installed). Neither tool is a hard dependency.
 
 The script ships with `--only=N[,N…]`, `--skip=N[,N…]`, `--stop-after=N`, and `--dry-run` flags for debugging which phase introduced a problem. Phases are idempotent: re-running on a partially-built output directory is safe. When a real-world source fails to build accessibly, fix it by adding/adjusting a phase in `tagging-real-world/build.sh` rather than editing the original `.tex`.
