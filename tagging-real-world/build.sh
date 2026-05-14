@@ -521,7 +521,7 @@ if phase_enabled 12; then
   log_phase 12 "Compile"
   cd "$output_dir"
   log_info "running latexmk with lualatex-dev"
-  latexmk -lualatex -lualatex="lualatex-dev -interaction=nonstopmode" -synctex=1 "$basename_tex" || true
+  latexmk -lualatex -lualatex=lualatex-dev -synctex=1 "$basename_tex" || true
   pdf_out="${basename_tex%.tex}.pdf"
   if [ ! -f "$pdf_out" ]; then
     die "PDF was not produced. Check $output_dir/${basename_tex%.tex}.log"
