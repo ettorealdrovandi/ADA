@@ -112,7 +112,7 @@ Phases:
   3.  \input → \include
   4.  amsbook → book
   5.  Strip structural hacks
-  6.  Legacy LaTeX fixes ($$, stray \\, align \\\\, \vfill\eject, geometry)
+  6.  Legacy LaTeX fixes ($$, stray \\, align \\\\, \vfill\eject, geometry, tikz decoration shim)
   7.  Clean preamble
   8.  Inject \DocumentMetadata
   9.  Inject unicode-math + font setup
@@ -393,6 +393,24 @@ if phase_enabled 6; then
 \\usepackage[paper=letterpaper,total={6in,8.5in}]{geometry}\
 ' "$master"
     log_change "$(basename "$master"): added \\usepackage{geometry}"
+  fi
+
+  # 6i. Tikz /tikz/decoration shim — master only. Current pgf (3.1.11a,
+  # shipped in TeX Live 2026) does NOT declare /tikz/decoration; only
+  # /pgf/decoration is defined. Sources that use the well-known
+  # shorthand `decoration={markings, mark=...}` as a tikzpicture option
+  # therefore trigger a recoverable pgfkeys "I do not know the key
+  # /tikz/decoration" error which becomes a fatal Emergency stop under
+  # interactive mode (Phase 12 runs latexmk without -interaction=nonstopmode).
+  # The shim re-declares /tikz/decoration as a forwarder to /pgf/decoration,
+  # restoring the historical syntax without modifying source bodies.
+  # Idempotent: marker comment "% defensive tikz decoration shim".
+  if grep -q '^\\usepackage{tikz}' "$master" && \
+     ! grep -q '% defensive tikz decoration shim' "$master"; then
+    sed -i '' '/^\\usepackage{tikz}/a\
+\\tikzset{decoration/.code={\\pgfkeys{/pgf/decoration={#1}}}} % defensive tikz decoration shim\
+' "$master"
+    log_change "$(basename "$master"): injected \\tikzset{decoration/.code=...} shim"
   fi
 fi
 [ "$stop_after_phase" = "6" ] && exit 0
