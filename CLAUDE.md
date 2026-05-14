@@ -31,13 +31,14 @@ latexmk -lualatex -lualatex=lualatex-dev -synctex=1 <filename>.tex
 For real-world sources, use the defensive pipeline:
 
 ```sh
-./tagging-real-world/build.sh <input.tex> [output-dir]                          # default output-dir: <input_dir>/tagged_output
+./tagging-real-world/build.sh <input.tex> [output-dir]                          # default output-dir: <input_dir>/tagged_output, UA-2
+./tagging-real-world/build.sh --ua=1 <input.tex>                                # build PDF/UA-1 instead of the default UA-2
 ./tagging-real-world/build.sh --dry-run <input.tex>                             # show diff vs. originals, don't compile
 ./tagging-real-world/build.sh --stop-after=6 <input.tex>                        # apply phases 1–6, leave the partial output
 INCLUDE_ONLY=graph_intro,gr_connect ./tagging-real-world/build.sh <input.tex>   # selective subfile compile via \includeonly
 ```
 
-`tagging-real-world/build.sh` copies sources to a fresh output dir (originals untouched), applies 13 transformation phases (see *Defensive build pipeline* below), then runs `latexmk -lualatex=lualatex-dev` and a light PDF/UA conformance check. CLI: `--only=N[,N…]`, `--skip=N[,N…]`, `--stop-after=N`, `--dry-run`.
+`tagging-real-world/build.sh` copies sources to a fresh output dir (originals untouched), applies 13 transformation phases (see *Defensive build pipeline* below), then runs `latexmk -lualatex=lualatex-dev` and a light PDF/UA conformance check. CLI: `--ua=1|--ua=2` (default 2), `--only=N[,N…]`, `--skip=N[,N…]`, `--stop-after=N`, `--dry-run`.
 
 ### LaTeXML HTML output (latexml/)
 
@@ -92,12 +93,12 @@ Math font setup uses `unicode-math` with OpenType fonts. The kept examples and t
 5. **Strip structural hacks** — remove `\@tocline` redefinitions of `\l@section` etc.; remove the `enumerate` package and strip optional args from `\begin{enumerate}[…]` (the block module rejects them as unknown keys).
 6. **Legacy LaTeX fixes** — patches patterns that `pdflatex` tolerated but `lualatex-dev` + tagging do not. Sub-steps: (a) `$$…$$` → `\[…\]` via an inline-math-aware pair-toggle awk (preserves the `$X$$Y$` typo case); (b) `\\\\` inside `align`/`align*` collapsed to `\\`; (c) standalone `\hfill\\` / `\hfill\\\\` / bare `\hfill` lines deleted; (d) trailing `\\` at end of a line removed when the next line is blank or begins with `\item`/`\end{}`/`\begin{}`/sectioning commands; (e) trailing `\\` on `\item` lines removed; (e2) `\\` immediately after `\]` or `\)` removed; (f) standalone `\vfill\eject` → `\clearpage`; (g) manual `\setlength{\textwidth/textheight/topmargin/oddsidemargin/evensidemargin}` replaced with a single `\usepackage[paper=letterpaper,total={6in,8.5in}]{geometry}`; (h) inline math `$X$` inside section-level commands wrapped with `\texorpdfstring{$X$}{}` to keep `\mitOmega` and friends out of the `.aux`/TOC.
 7. **Clean preamble** — remove `\font\sans=cmss10`, `\input xypic`, `\usepackage[all]{xy}`, comma-listed `,xypic`, `nopageno`, `eucal`, `\thispagestyle{empty}`; dedupe `graphicx` and `xcolor`; add `[normalem]` to `ulem`.
-8. **Inject `\DocumentMetadata`** — `tagging=on`, `tagging-setup={math/setup={mathml-SE,mathml-AF}, extra-modules={verbatim-mo,verbatim-af}}`, `pdfstandard=ua-2`, `pdfversion=2.0`, `lang=en` (skipped if already present).
+8. **Inject `\DocumentMetadata`** — by default UA-2: `tagging=on`, `tagging-setup={math/setup={mathml-SE,mathml-AF}, extra-modules={verbatim-mo,verbatim-af}}`, `pdfstandard=ua-2`, `pdfversion=2.0`, `lang=en`. With `--ua=1`, emits the shorter UA-1 block instead (no `tagging-setup` line; `pdfstandard=ua-1`, `pdfversion=1.7`), matching `tagging/examples/minimal-ua1/`. `\tagpdfsetup{math/alt/use}` is still injected by phase 9 for both flavours. Skipped if `\DocumentMetadata` is already present.
 9. **Inject unicode-math + font setup** — after the `amssymb` line: `\usepackage{unicode-math}`, `\setmainfont{TeX Gyre Termes}`, `\setmathfont{texgyretermes-math.otf}`, `\tagpdfsetup{math/alt/use}`.
 10. **Math font commands** — `\mathbb` → `\symbb`, `\mathcal` → `\symcal`, `\mathfrak` → `\symfrak`, `\mathscr` → `\symscr` across all `.tex` files.
 11. **Colorblind-friendly colors** — add `\usepackage[OkabeIto,keep-defaults]{colorblind}` after `xcolor`; remap `\definecolor{T}{rgb}{0,.5,0}` → `\colorlet{T}{OI5}` and the corresponding `F` → `OI6`.
 12. **Compile** — `latexmk -lualatex -lualatex="lualatex-dev -interaction=nonstopmode" -synctex=1`.
-13. **PDF/UA validation** — light conformance check: reads PDF metadata via `pdfinfo` (if installed) and optionally runs `verapdf --flavour ua2` (if installed). Neither tool is a hard dependency.
+13. **PDF/UA validation** — light conformance check: reads PDF metadata via `pdfinfo` (if installed) and optionally runs `verapdf --flavour ua1` or `--flavour ua2` (matching the build flavour, if installed). Neither tool is a hard dependency.
 
 The script ships with `--only=N[,N…]`, `--skip=N[,N…]`, `--stop-after=N`, and `--dry-run` flags for debugging which phase introduced a problem. Phases are idempotent: re-running on a partially-built output directory is safe. When a real-world source fails to build accessibly, fix it by adding/adjusting a phase in `tagging-real-world/build.sh` rather than editing the original `.tex`.
 

@@ -5,7 +5,7 @@ nav_order: 2
 has_children: false
 ---
 
-# Tagging — real-world LaTeX → PDF/UA-2
+# Tagging — real-world LaTeX → PDF/UA-1 or PDF/UA-2
 
 A defensive build pipeline for **legacy, messy LaTeX sources** that
 weren't written with tagging in mind: `amsbook`-class books split into
@@ -14,6 +14,13 @@ many subfiles via `\input`, plain-TeX `$$...$$` display math, manual
 on. The script `build.sh` copies the input tree to an output directory,
 applies a sequence of phases on the **copies**, and compiles the result
 with `lualatex-dev`. Originals are never modified.
+
+Both **PDF/UA-2** (default) and **PDF/UA-1** are supported — pick the
+flavour with `--ua=1` / `--ua=2` (default 2). UA-1 emits a shorter
+`\DocumentMetadata` block without the MathML-embedding `tagging-setup`
+line, matching the canonical
+[`tagging/examples/minimal-ua1/`](https://github.com/ettorealdrovandi/ADA/tree/main/tagging/examples/minimal-ua1)
+preamble.
 
 ## When to pick this over [`tagging/`](tagging.html)
 
@@ -42,6 +49,7 @@ INCLUDE_ONLY=chapter1,chapter2 ./build.sh main.tex
 
 | Flag | Purpose |
 |---|---|
+| `--ua=1` \| `--ua=2` | PDF/UA flavour to target (default: 2) |
 | `--only=N[,N…]` | Run only the listed phase numbers |
 | `--skip=N[,N…]` | Skip the listed phases |
 | `--stop-after=N` | Run through phase N and exit (no compile) |
@@ -66,7 +74,8 @@ in-repo README.
 - `latexmk`.
 - The `tagpdf` package and the LaTeX team's `latex-lab` modules.
 - Optional (used only by phase 13): `pdfinfo` and
-  [`verapdf`](https://verapdf.org/) for PDF/UA-2 conformance checks.
+  [`verapdf`](https://verapdf.org/) for PDF/UA conformance checks
+  (`verapdf` is invoked with the flavour matching the build).
 
 ## In-repo docs
 

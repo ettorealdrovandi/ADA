@@ -1,9 +1,10 @@
 #!/bin/bash
-# build.sh — Defensive build pipeline: real-world LaTeX → tagged PDF/UA-2
+# build.sh — Defensive build pipeline: real-world LaTeX → tagged PDF/UA-1 or PDF/UA-2 (default UA-2)
 #
 # Copies the input tree to an output directory and applies transformation
 # phases on the COPIES so the originals are never modified. Compiles the
-# result with lualatex-dev for full PDF/UA-2 tagging support.
+# result with lualatex-dev for full PDF/UA tagging support. The UA flavour
+# is selectable via --ua=1|--ua=2 (default 2).
 #
 # Usage: ./build.sh [OPTIONS] <input.tex> [output-dir]
 # See --help for options.
@@ -22,6 +23,7 @@ dry_run=0
 only_phases=""
 skip_phases=""
 stop_after_phase=99
+ua_flavour="2"
 
 # ── Logging / error helpers ─────────────────────────────────────────
 log_phase()  { current_phase="$1"; current_phase_name="$2"; echo ""; echo "── Phase $1: $2 ──"; }
@@ -85,11 +87,15 @@ usage() {
   cat <<'EOF'
 Usage: build.sh [OPTIONS] <input.tex> [output-dir]
 
-Build a tagged PDF/UA-2 from a real-world LaTeX source. The input tree is
-copied to output-dir (default: <input_dir>/tagged_output) and defensive
-transformations are applied on the copies. Originals are never modified.
+Build a tagged PDF/UA (UA-2 by default, UA-1 with --ua=1) from a
+real-world LaTeX source. The input tree is copied to output-dir
+(default: <input_dir>/tagged_output) and defensive transformations
+are applied on the copies. Originals are never modified.
 
 Options:
+  --ua=1|--ua=2        PDF/UA flavour to target (default: 2). UA-1 omits
+                       the MathML-embedding tagging-setup line; both
+                       flavours embed math alt-text via tagpdfsetup.
   --only=N[,N...]      Run only the listed phase numbers
   --skip=N[,N...]      Skip the listed phases
   --stop-after=N       Run through phase N and exit (no compile)
@@ -121,6 +127,13 @@ EOF
 positional=()
 while [ $# -gt 0 ]; do
   case "$1" in
+    --ua=*)
+      ua_flavour="${1#--ua=}"
+      case "$ua_flavour" in
+        1|2) ;;
+        *) echo "Error: --ua must be 1 or 2 (got '$ua_flavour')" >&2; exit 2 ;;
+      esac
+      shift ;;
     --only=*)        only_phases="${1#--only=}"; shift ;;
     --skip=*)        skip_phases="${1#--skip=}"; shift ;;
     --stop-after=*)  stop_after_phase="${1#--stop-after=}"; shift ;;
@@ -153,6 +166,15 @@ fi
 output_dir="${2:-$input_dir/tagged_output}"
 mkdir -p "$output_dir"
 master="$output_dir/$basename_tex"
+
+# ── Derived UA flavour settings ─────────────────────────────────────
+pdfstandard="ua-${ua_flavour}"
+if [ "$ua_flavour" = "1" ]; then
+  pdfversion="1.7"
+else
+  pdfversion="2.0"
+fi
+echo "  PDF/UA flavour: ${pdfstandard} (pdf ${pdfversion})"
 
 # ── Phase 1: Setup ──────────────────────────────────────────────────
 if phase_enabled 1; then
@@ -402,10 +424,24 @@ fi
 [ "$stop_after_phase" = "7" ] && exit 0
 
 # ── Phase 8: Inject \DocumentMetadata ───────────────────────────────
+# UA-2 (default) embeds MathML as Structure Element + Artifact Form via
+# tagging-setup. UA-1 omits that line, matching tagging/examples/minimal-ua1/
+# (which has the same line commented out). \tagpdfsetup{math/alt/use} is
+# injected separately by Phase 9 for both flavours.
 if phase_enabled 8; then
-  log_phase 8 "Inject \\DocumentMetadata"
+  log_phase 8 "Inject \\DocumentMetadata (PDF/${pdfstandard})"
   if ! grep -q '^\\DocumentMetadata' "$master"; then
-    sed -i '' '/^\\documentclass/i\
+    if [ "$ua_flavour" = "1" ]; then
+      sed -i '' '/^\\documentclass/i\
+\\DocumentMetadata{\
+  tagging       = on,\
+  pdfstandard   = ua-1,\
+  pdfversion    = 1.7,\
+  lang          = en,\
+}\
+' "$master"
+    else
+      sed -i '' '/^\\documentclass/i\
 \\DocumentMetadata{\
   tagging       = on,\
   tagging-setup = {math/setup={mathml-SE,mathml-AF}, extra-modules={verbatim-mo,verbatim-af}},\
@@ -414,7 +450,8 @@ if phase_enabled 8; then
   lang          = en,\
 }\
 ' "$master"
-    log_change "$(basename "$master"): added \\DocumentMetadata"
+    fi
+    log_change "$(basename "$master"): added \\DocumentMetadata (${pdfstandard})"
   else
     log_skip "\\DocumentMetadata already present"
   fi
@@ -517,10 +554,10 @@ if phase_enabled 13; then
   fi
 
   if command -v verapdf >/dev/null 2>&1; then
-    if verapdf --flavour ua2 "$pdf_out" >/dev/null 2>&1; then
-      ua_vera="PASS"
+    if verapdf --flavour "ua${ua_flavour}" "$pdf_out" >/dev/null 2>&1; then
+      ua_vera="PASS (ua${ua_flavour})"
     else
-      ua_vera="FAIL (see verapdf output)"
+      ua_vera="FAIL (ua${ua_flavour} — see verapdf output)"
     fi
   fi
 

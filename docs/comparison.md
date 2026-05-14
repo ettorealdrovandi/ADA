@@ -8,11 +8,11 @@ nav_order: 3
 
 | Property | Tagging | Tagging — real-world | LaTeXML | TeX4ht | Markdown (Pandoc) |
 |---|---|---|---|---|---|
-| **Output format** | Tagged PDF (UA-1, UA-2) | Tagged PDF (UA-2) | HTML5 + Presentation/Content MathML | HTML5 (MathJax or MathML) | HTML5 (MathJax or MathML) |
+| **Output format** | Tagged PDF (UA-1, UA-2) | Tagged PDF (UA-1, UA-2; UA-2 default) | HTML5 + Presentation/Content MathML | HTML5 (MathJax or MathML) | HTML5 (MathJax or MathML) |
 | **Input format** | LaTeX (tagging-aware) | LaTeX (legacy, messy) | LaTeX | LaTeX | Markdown |
 | **Math rendering** | MathML embedded as Structure Element + Artifact Form | Same as Tagging | Both Pres. & Content MathML, with raw TeX as fallback | MathJax (CDN) **or** native MathML | MathJax (CDN) **or** native MathML |
 | **Math modes committed per example** | 1 (PDF) | n/a — pipeline ships without examples | 1 (HTML) | 2 (mathjax + mathml) | 2 (mathjax + mathml) |
-| **PDF/UA conformance** | Yes (UA-1 / UA-2) | Yes (UA-2) | n/a | n/a | n/a |
+| **PDF/UA conformance** | Yes (UA-1 / UA-2) | Yes (UA-1 / UA-2 via `--ua=`) | n/a | n/a | n/a |
 | **Accessibility post-processing** | None — handled in TeX | None at the HTML layer; ~13 defensive source-rewrite phases in `build.sh` | `fix-a11y.sh` (theorem `<h6>` + equation `<table>` fixes) | `fix-a11y.sh` (equation `<table>` fix; MathML mode only) | None (output already clean) |
 | **Custom CSS tracked** | n/a (PDF output) | n/a (PDF output) | `latex-style.css` | `style.css` + `config.cfg` | `style.css` |
 | **Scope notes** | Tagging-pipeline-aware LaTeX sources only | Real-world legacy LaTeX: `amsbook` + `\input`-based books, `$$…$$`, `xypic`, manual margin `\setlength`, etc. | Compatible with most LaTeX dialects (the `amsart` paper builds with ~16 warnings) | Standard LaTeX | **Single-file Markdown only** — multi-file workflows out of scope |

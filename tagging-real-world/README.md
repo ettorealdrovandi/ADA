@@ -50,6 +50,7 @@ INCLUDE_ONLY=chapter1,chapter2 ./build.sh main.tex
 
 | Flag | Purpose |
 |---|---|
+| `--ua=1` \| `--ua=2` | PDF/UA flavour to target. **Default: 2.** UA-1 emits a shorter `\DocumentMetadata` block without the MathML-embedding `tagging-setup` line — matching the canonical [`tagging/examples/minimal-ua1/`](../tagging/examples/minimal-ua1/) preamble. Both flavours still embed math alt-text via `\tagpdfsetup{math/alt/use}` (Phase 9). |
 | `--only=N[,N…]` | Run only the listed phase numbers (see phase list below). |
 | `--skip=N[,N…]` | Run everything except the listed phases. |
 | `--stop-after=N` | Run through phase N and exit (no compile). Useful for debugging which phase introduced a problem. |
@@ -72,12 +73,12 @@ safe.
 | 5 | Strip structural hacks | Removes `\@tocline` redefinitions of `\l@section` etc.; removes the `enumerate` package and strips optional args from `\begin{enumerate}[…]` (the tagging block module rejects them as unknown keys). |
 | 6 | **Legacy LaTeX fixes** | Catalog below. |
 | 7 | Clean preamble | Removes `\font\sans=cmss10`, `\input xypic`, `\usepackage[all]{xy}`, comma-listed `,xypic`, `nopageno`, `eucal`, `\thispagestyle{empty}`; dedupes `graphicx` and `xcolor`; adds `[normalem]` to `ulem`. |
-| 8 | Inject `\DocumentMetadata` | UA-2, version 2.0, MathML embedded as Structure Element + Artifact Form, `lang=en`. Skipped if already present. |
+| 8 | Inject `\DocumentMetadata` | UA-2 by default (version 2.0, MathML embedded as Structure Element + Artifact Form, `lang=en`). Pass `--ua=1` to emit the UA-1 block instead (version 1.7, no MathML-embedding `tagging-setup` line). Skipped if `\DocumentMetadata` is already present. |
 | 9 | Inject `unicode-math` + font setup | `\usepackage{unicode-math}`, TeX Gyre Termes / `texgyretermes-math.otf`, `\tagpdfsetup{math/alt/use}`. Skipped if already present. |
 | 10 | Math font commands | `\mathbb` → `\symbb`, `\mathcal` → `\symcal`, `\mathfrak` → `\symfrak`, `\mathscr` → `\symscr`. Required because `unicode-math` clashes with the legacy `\math*` commands. |
 | 11 | Colorblind-friendly colors | Adds `\usepackage[OkabeIto,keep-defaults]{colorblind}` after `xcolor`; remaps the conventional `T` (green) and `F` (red) colors to Okabe-Ito `OI5` / `OI6`. |
 | 12 | Compile | `latexmk -lualatex -lualatex="lualatex-dev -interaction=nonstopmode" -synctex=1`. |
-| 13 | PDF/UA validation | Light conformance check: reads PDF metadata via `pdfinfo` (if installed) and optionally runs `verapdf --flavour ua2` (if installed). Neither tool is a hard dependency. |
+| 13 | PDF/UA validation | Light conformance check: reads PDF metadata via `pdfinfo` (if installed) and optionally runs `verapdf --flavour ua1` or `--flavour ua2` (matching the requested build). Neither tool is a hard dependency. |
 
 ### Phase 6 — Legacy LaTeX fixes (catalog)
 
