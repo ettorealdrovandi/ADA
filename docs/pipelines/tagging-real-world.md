@@ -53,17 +53,24 @@ INCLUDE_ONLY=chapter1,chapter2 ./build.sh main.tex
 | `--only=N[,N…]` | Run only the listed phase numbers |
 | `--skip=N[,N…]` | Skip the listed phases |
 | `--stop-after=N` | Run through phase N and exit (no compile) |
+| `--no-autofix` | In Phase 12, report `\begin`/`\end` imbalances and prose-on-prose nestings but do not auto-fix; hard-fail on any defect |
+| `--validate` | Run Phase 14 (PDF/UA validation via `pdfinfo` + `verapdf`). Off by default; implicitly enabled by `--only=14` |
 | `--dry-run` | Run all transform phases, print a `diff` against originals, exit |
 
 ## What `build.sh` does
 
-13 numbered phases. Each phase is idempotent (re-running on a
+14 numbered phases. Each phase is idempotent (re-running on a
 partially-built output directory is safe). Phase 6 — the **Legacy
 LaTeX fixes** phase — is the heart of the pipeline; it auto-patches
 patterns that `pdflatex` tolerated but `lualatex-dev` + tagging do
 not (stray `\\` line breaks, `$$ … $$` display math, `\hfill\\`
 spacing hacks, `\\\\` inside `align` environments, manual `\setlength`
-margins replaced with `geometry`, etc.).
+margins replaced with `geometry`, etc.). Phase 12 validates
+`\begin`/`\end` balance and detects prose-on-prose env nestings (a
+known trigger of the `tagpdf` para-hook miscount), auto-fixing the
+safe cases. On any compile failure, Phase 13 prints a visually
+distinct warning naming likely partly-compatible packages and
+recommending a re-run.
 
 The full phase catalog and the legacy-fixes sub-step table live in the
 in-repo README.
@@ -73,9 +80,10 @@ in-repo README.
 - A recent TeX Live with **`lualatex-dev`**.
 - `latexmk`.
 - The `tagpdf` package and the LaTeX team's `latex-lab` modules.
-- Optional (used only by phase 13): `pdfinfo` and
-  [`verapdf`](https://verapdf.org/) for PDF/UA conformance checks
-  (`verapdf` is invoked with the flavour matching the build).
+- Optional (used only by Phase 14, which is opt-in via `--validate`):
+  `pdfinfo` and [`verapdf`](https://verapdf.org/) for PDF/UA
+  conformance checks (`verapdf` is invoked with the flavour matching
+  the build).
 
 ## In-repo docs
 
